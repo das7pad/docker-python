@@ -141,8 +141,8 @@ for version in "${versions[@]}"; do
 
 		sed -ri \
 			-e 's/^(ENV GPG_KEY) .*/\1 '"${gpgKeys[$version]:-${gpgKeys[$rcVersion]}}"'/' \
-			-e 's/^(ENV PYTHON_VERSION) .*/\1 '"$fullVersion"'/' \
-			-e 's/^(ENV PYTHON_RELEASE) .*/\1 '"${fullVersion%%[a-z]*}"'/' \
+			-e 's/^(ARG PYTHON_VERSION)=.*/\1='"$fullVersion"'/' \
+			-e 's/^(ARG PYTHON_RELEASE)=.*/\1='"${fullVersion%%[a-z]*}"'/' \
 			-e 's/^(ENV PYTHON_PIP_VERSION) .*/\1 '"$pipVersion"'/' \
 			-e 's/^(FROM python):.*/\1:'"$version-$tag"'/' \
 			-e 's!^(FROM (debian|buildpack-deps|alpine|mcr[.]microsoft[.]com/[^:]+)):.*!\1:'"$tag"'!' \

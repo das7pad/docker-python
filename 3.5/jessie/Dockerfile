@@ -19,7 +19,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	&& rm -rf /var/lib/apt/lists/*
 
 ENV GPG_KEY 97FC712E4C024BBEA48A61ED3A5CA953F73C700D
-ENV PYTHON_VERSION 3.5.7
+ARG PYTHON_VERSION=3.5.7
+ENV PYTHON_VERSION ${PYTHON_VERSION}
 
 RUN set -ex \
 	\
