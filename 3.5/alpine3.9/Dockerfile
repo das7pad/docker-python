@@ -18,7 +18,8 @@ ENV LANG C.UTF-8
 RUN apk add --no-cache ca-certificates
 
 ENV GPG_KEY 97FC712E4C024BBEA48A61ED3A5CA953F73C700D
-ENV PYTHON_VERSION 3.5.6
+ARG PYTHON_VERSION=3.5.6
+ENV PYTHON_VERSION ${PYTHON_VERSION}
 
 RUN set -ex \
 	&& apk add --no-cache --virtual .fetch-deps \
