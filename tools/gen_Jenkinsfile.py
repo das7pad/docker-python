@@ -92,6 +92,7 @@ stage('%(version)s') {
                     && docker tag \\
                         $DOCKER_REGISTRY/python:%(version)s \\
                         $IMAGE_CACHE \\
+                    && docker rmi $DOCKER_REGISTRY/python:%(version)s \\
                     || true
                 '''
             }

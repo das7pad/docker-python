@@ -40,6 +40,7 @@ pipeline {
                   && docker tag \
                     $DOCKER_REGISTRY/python:2.7.16 \
                     $IMAGE_CACHE \
+                  && docker rmi $DOCKER_REGISTRY/python:2.7.16 \
                   || true
                 '''
               }
@@ -104,6 +105,7 @@ pipeline {
                   && docker tag \
                     $DOCKER_REGISTRY/python:3.5.3 \
                     $IMAGE_CACHE \
+                  && docker rmi $DOCKER_REGISTRY/python:3.5.3 \
                   || true
                 '''
               }
@@ -162,6 +164,7 @@ pipeline {
                   && docker tag \
                     $DOCKER_REGISTRY/python:3.5.4 \
                     $IMAGE_CACHE \
+                  && docker rmi $DOCKER_REGISTRY/python:3.5.4 \
                   || true
                 '''
               }
@@ -220,6 +223,7 @@ pipeline {
                   && docker tag \
                     $DOCKER_REGISTRY/python:3.5.5 \
                     $IMAGE_CACHE \
+                  && docker rmi $DOCKER_REGISTRY/python:3.5.5 \
                   || true
                 '''
               }
@@ -278,6 +282,7 @@ pipeline {
                   && docker tag \
                     $DOCKER_REGISTRY/python:3.5.6 \
                     $IMAGE_CACHE \
+                  && docker rmi $DOCKER_REGISTRY/python:3.5.6 \
                   || true
                 '''
               }
@@ -339,6 +344,7 @@ pipeline {
                   && docker tag \
                     $DOCKER_REGISTRY/python:3.6.0 \
                     $IMAGE_CACHE \
+                  && docker rmi $DOCKER_REGISTRY/python:3.6.0 \
                   || true
                 '''
               }
@@ -397,6 +403,7 @@ pipeline {
                   && docker tag \
                     $DOCKER_REGISTRY/python:3.6.1 \
                     $IMAGE_CACHE \
+                  && docker rmi $DOCKER_REGISTRY/python:3.6.1 \
                   || true
                 '''
               }
@@ -455,6 +462,7 @@ pipeline {
                   && docker tag \
                     $DOCKER_REGISTRY/python:3.6.2 \
                     $IMAGE_CACHE \
+                  && docker rmi $DOCKER_REGISTRY/python:3.6.2 \
                   || true
                 '''
               }
@@ -513,6 +521,7 @@ pipeline {
                   && docker tag \
                     $DOCKER_REGISTRY/python:3.6.3 \
                     $IMAGE_CACHE \
+                  && docker rmi $DOCKER_REGISTRY/python:3.6.3 \
                   || true
                 '''
               }
@@ -571,6 +580,7 @@ pipeline {
                   && docker tag \
                     $DOCKER_REGISTRY/python:3.6.4 \
                     $IMAGE_CACHE \
+                  && docker rmi $DOCKER_REGISTRY/python:3.6.4 \
                   || true
                 '''
               }
@@ -629,6 +639,7 @@ pipeline {
                   && docker tag \
                     $DOCKER_REGISTRY/python:3.6.5 \
                     $IMAGE_CACHE \
+                  && docker rmi $DOCKER_REGISTRY/python:3.6.5 \
                   || true
                 '''
               }
@@ -687,6 +698,7 @@ pipeline {
                   && docker tag \
                     $DOCKER_REGISTRY/python:3.6.6 \
                     $IMAGE_CACHE \
+                  && docker rmi $DOCKER_REGISTRY/python:3.6.6 \
                   || true
                 '''
               }
@@ -745,6 +757,7 @@ pipeline {
                   && docker tag \
                     $DOCKER_REGISTRY/python:3.6.7 \
                     $IMAGE_CACHE \
+                  && docker rmi $DOCKER_REGISTRY/python:3.6.7 \
                   || true
                 '''
               }
@@ -803,6 +816,7 @@ pipeline {
                   && docker tag \
                     $DOCKER_REGISTRY/python:3.6.8 \
                     $IMAGE_CACHE \
+                  && docker rmi $DOCKER_REGISTRY/python:3.6.8 \
                   || true
                 '''
               }
@@ -864,6 +878,7 @@ pipeline {
                   && docker tag \
                     $DOCKER_REGISTRY/python:3.7.0 \
                     $IMAGE_CACHE \
+                  && docker rmi $DOCKER_REGISTRY/python:3.7.0 \
                   || true
                 '''
               }
@@ -922,6 +937,7 @@ pipeline {
                   && docker tag \
                     $DOCKER_REGISTRY/python:3.7.1 \
                     $IMAGE_CACHE \
+                  && docker rmi $DOCKER_REGISTRY/python:3.7.1 \
                   || true
                 '''
               }
@@ -980,6 +996,7 @@ pipeline {
                   && docker tag \
                     $DOCKER_REGISTRY/python:3.7.2 \
                     $IMAGE_CACHE \
+                  && docker rmi $DOCKER_REGISTRY/python:3.7.2 \
                   || true
                 '''
               }
@@ -1038,6 +1055,7 @@ pipeline {
                   && docker tag \
                     $DOCKER_REGISTRY/python:3.7.3 \
                     $IMAGE_CACHE \
+                  && docker rmi $DOCKER_REGISTRY/python:3.7.3 \
                   || true
                 '''
               }
