@@ -108,9 +108,7 @@ stage('%(version)s') {
         stage('%(version)s Test') {
             steps {
                 unstash 'official-images'
-                retry(3) {
-                    sh 'official-images/test/run.sh $IMAGE'
-                }
+                sh 'official-images/test/run.sh $IMAGE'
             }
         }
         stage('%(version)s Push') {
@@ -138,9 +136,7 @@ stage('%(version)s') {
 
 TAGS = indent(8, """
 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:%(tag)s'
-retry(3) {
-    sh 'docker push $DOCKER_REGISTRY/python:%(tag)s'
-}
+sh 'docker push $DOCKER_REGISTRY/python:%(tag)s'
 """)
 
 RMI_TAG = indent(8, """

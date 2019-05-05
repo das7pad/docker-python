@@ -56,25 +56,17 @@ pipeline {
             stage('2.7.16 Test') {
               steps {
                 unstash 'official-images'
-                retry(3) {
-                  sh 'official-images/test/run.sh $IMAGE'
-                }
+                sh 'official-images/test/run.sh $IMAGE'
               }
             }
             stage('2.7.16 Push') {
               steps {
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:2'
-                retry(3) {
-                  sh 'docker push $DOCKER_REGISTRY/python:2'
-                }
+                sh 'docker push $DOCKER_REGISTRY/python:2'
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:2.7'
-                retry(3) {
-                  sh 'docker push $DOCKER_REGISTRY/python:2.7'
-                }
+                sh 'docker push $DOCKER_REGISTRY/python:2.7'
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:2.7.16'
-                retry(3) {
-                  sh 'docker push $DOCKER_REGISTRY/python:2.7.16'
-                }
+                sh 'docker push $DOCKER_REGISTRY/python:2.7.16'
               }
             }
           }
@@ -126,17 +118,13 @@ pipeline {
             stage('3.5.3 Test') {
               steps {
                 unstash 'official-images'
-                retry(3) {
-                  sh 'official-images/test/run.sh $IMAGE'
-                }
+                sh 'official-images/test/run.sh $IMAGE'
               }
             }
             stage('3.5.3 Push') {
               steps {
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.5.3'
-                retry(3) {
-                  sh 'docker push $DOCKER_REGISTRY/python:3.5.3'
-                }
+                sh 'docker push $DOCKER_REGISTRY/python:3.5.3'
               }
             }
           }
@@ -186,17 +174,13 @@ pipeline {
             stage('3.5.4 Test') {
               steps {
                 unstash 'official-images'
-                retry(3) {
-                  sh 'official-images/test/run.sh $IMAGE'
-                }
+                sh 'official-images/test/run.sh $IMAGE'
               }
             }
             stage('3.5.4 Push') {
               steps {
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.5.4'
-                retry(3) {
-                  sh 'docker push $DOCKER_REGISTRY/python:3.5.4'
-                }
+                sh 'docker push $DOCKER_REGISTRY/python:3.5.4'
               }
             }
           }
@@ -246,17 +230,13 @@ pipeline {
             stage('3.5.5 Test') {
               steps {
                 unstash 'official-images'
-                retry(3) {
-                  sh 'official-images/test/run.sh $IMAGE'
-                }
+                sh 'official-images/test/run.sh $IMAGE'
               }
             }
             stage('3.5.5 Push') {
               steps {
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.5.5'
-                retry(3) {
-                  sh 'docker push $DOCKER_REGISTRY/python:3.5.5'
-                }
+                sh 'docker push $DOCKER_REGISTRY/python:3.5.5'
               }
             }
           }
@@ -306,21 +286,15 @@ pipeline {
             stage('3.5.6 Test') {
               steps {
                 unstash 'official-images'
-                retry(3) {
-                  sh 'official-images/test/run.sh $IMAGE'
-                }
+                sh 'official-images/test/run.sh $IMAGE'
               }
             }
             stage('3.5.6 Push') {
               steps {
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.5'
-                retry(3) {
-                  sh 'docker push $DOCKER_REGISTRY/python:3.5'
-                }
+                sh 'docker push $DOCKER_REGISTRY/python:3.5'
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.5.6'
-                retry(3) {
-                  sh 'docker push $DOCKER_REGISTRY/python:3.5.6'
-                }
+                sh 'docker push $DOCKER_REGISTRY/python:3.5.6'
               }
             }
           }
@@ -371,17 +345,13 @@ pipeline {
             stage('3.6.0 Test') {
               steps {
                 unstash 'official-images'
-                retry(3) {
-                  sh 'official-images/test/run.sh $IMAGE'
-                }
+                sh 'official-images/test/run.sh $IMAGE'
               }
             }
             stage('3.6.0 Push') {
               steps {
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.0'
-                retry(3) {
-                  sh 'docker push $DOCKER_REGISTRY/python:3.6.0'
-                }
+                sh 'docker push $DOCKER_REGISTRY/python:3.6.0'
               }
             }
           }
@@ -431,17 +401,13 @@ pipeline {
             stage('3.6.1 Test') {
               steps {
                 unstash 'official-images'
-                retry(3) {
-                  sh 'official-images/test/run.sh $IMAGE'
-                }
+                sh 'official-images/test/run.sh $IMAGE'
               }
             }
             stage('3.6.1 Push') {
               steps {
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.1'
-                retry(3) {
-                  sh 'docker push $DOCKER_REGISTRY/python:3.6.1'
-                }
+                sh 'docker push $DOCKER_REGISTRY/python:3.6.1'
               }
             }
           }
@@ -491,17 +457,13 @@ pipeline {
             stage('3.6.2 Test') {
               steps {
                 unstash 'official-images'
-                retry(3) {
-                  sh 'official-images/test/run.sh $IMAGE'
-                }
+                sh 'official-images/test/run.sh $IMAGE'
               }
             }
             stage('3.6.2 Push') {
               steps {
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.2'
-                retry(3) {
-                  sh 'docker push $DOCKER_REGISTRY/python:3.6.2'
-                }
+                sh 'docker push $DOCKER_REGISTRY/python:3.6.2'
               }
             }
           }
@@ -551,17 +513,13 @@ pipeline {
             stage('3.6.3 Test') {
               steps {
                 unstash 'official-images'
-                retry(3) {
-                  sh 'official-images/test/run.sh $IMAGE'
-                }
+                sh 'official-images/test/run.sh $IMAGE'
               }
             }
             stage('3.6.3 Push') {
               steps {
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.3'
-                retry(3) {
-                  sh 'docker push $DOCKER_REGISTRY/python:3.6.3'
-                }
+                sh 'docker push $DOCKER_REGISTRY/python:3.6.3'
               }
             }
           }
@@ -611,17 +569,13 @@ pipeline {
             stage('3.6.4 Test') {
               steps {
                 unstash 'official-images'
-                retry(3) {
-                  sh 'official-images/test/run.sh $IMAGE'
-                }
+                sh 'official-images/test/run.sh $IMAGE'
               }
             }
             stage('3.6.4 Push') {
               steps {
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.4'
-                retry(3) {
-                  sh 'docker push $DOCKER_REGISTRY/python:3.6.4'
-                }
+                sh 'docker push $DOCKER_REGISTRY/python:3.6.4'
               }
             }
           }
@@ -671,17 +625,13 @@ pipeline {
             stage('3.6.5 Test') {
               steps {
                 unstash 'official-images'
-                retry(3) {
-                  sh 'official-images/test/run.sh $IMAGE'
-                }
+                sh 'official-images/test/run.sh $IMAGE'
               }
             }
             stage('3.6.5 Push') {
               steps {
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.5'
-                retry(3) {
-                  sh 'docker push $DOCKER_REGISTRY/python:3.6.5'
-                }
+                sh 'docker push $DOCKER_REGISTRY/python:3.6.5'
               }
             }
           }
@@ -731,17 +681,13 @@ pipeline {
             stage('3.6.6 Test') {
               steps {
                 unstash 'official-images'
-                retry(3) {
-                  sh 'official-images/test/run.sh $IMAGE'
-                }
+                sh 'official-images/test/run.sh $IMAGE'
               }
             }
             stage('3.6.6 Push') {
               steps {
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.6'
-                retry(3) {
-                  sh 'docker push $DOCKER_REGISTRY/python:3.6.6'
-                }
+                sh 'docker push $DOCKER_REGISTRY/python:3.6.6'
               }
             }
           }
@@ -791,17 +737,13 @@ pipeline {
             stage('3.6.7 Test') {
               steps {
                 unstash 'official-images'
-                retry(3) {
-                  sh 'official-images/test/run.sh $IMAGE'
-                }
+                sh 'official-images/test/run.sh $IMAGE'
               }
             }
             stage('3.6.7 Push') {
               steps {
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.7'
-                retry(3) {
-                  sh 'docker push $DOCKER_REGISTRY/python:3.6.7'
-                }
+                sh 'docker push $DOCKER_REGISTRY/python:3.6.7'
               }
             }
           }
@@ -851,21 +793,15 @@ pipeline {
             stage('3.6.8 Test') {
               steps {
                 unstash 'official-images'
-                retry(3) {
-                  sh 'official-images/test/run.sh $IMAGE'
-                }
+                sh 'official-images/test/run.sh $IMAGE'
               }
             }
             stage('3.6.8 Push') {
               steps {
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.6'
-                retry(3) {
-                  sh 'docker push $DOCKER_REGISTRY/python:3.6'
-                }
+                sh 'docker push $DOCKER_REGISTRY/python:3.6'
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.8'
-                retry(3) {
-                  sh 'docker push $DOCKER_REGISTRY/python:3.6.8'
-                }
+                sh 'docker push $DOCKER_REGISTRY/python:3.6.8'
               }
             }
           }
@@ -916,17 +852,13 @@ pipeline {
             stage('3.7.0 Test') {
               steps {
                 unstash 'official-images'
-                retry(3) {
-                  sh 'official-images/test/run.sh $IMAGE'
-                }
+                sh 'official-images/test/run.sh $IMAGE'
               }
             }
             stage('3.7.0 Push') {
               steps {
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.7.0'
-                retry(3) {
-                  sh 'docker push $DOCKER_REGISTRY/python:3.7.0'
-                }
+                sh 'docker push $DOCKER_REGISTRY/python:3.7.0'
               }
             }
           }
@@ -976,17 +908,13 @@ pipeline {
             stage('3.7.1 Test') {
               steps {
                 unstash 'official-images'
-                retry(3) {
-                  sh 'official-images/test/run.sh $IMAGE'
-                }
+                sh 'official-images/test/run.sh $IMAGE'
               }
             }
             stage('3.7.1 Push') {
               steps {
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.7.1'
-                retry(3) {
-                  sh 'docker push $DOCKER_REGISTRY/python:3.7.1'
-                }
+                sh 'docker push $DOCKER_REGISTRY/python:3.7.1'
               }
             }
           }
@@ -1036,17 +964,13 @@ pipeline {
             stage('3.7.2 Test') {
               steps {
                 unstash 'official-images'
-                retry(3) {
-                  sh 'official-images/test/run.sh $IMAGE'
-                }
+                sh 'official-images/test/run.sh $IMAGE'
               }
             }
             stage('3.7.2 Push') {
               steps {
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.7.2'
-                retry(3) {
-                  sh 'docker push $DOCKER_REGISTRY/python:3.7.2'
-                }
+                sh 'docker push $DOCKER_REGISTRY/python:3.7.2'
               }
             }
           }
@@ -1096,29 +1020,19 @@ pipeline {
             stage('3.7.3 Test') {
               steps {
                 unstash 'official-images'
-                retry(3) {
-                  sh 'official-images/test/run.sh $IMAGE'
-                }
+                sh 'official-images/test/run.sh $IMAGE'
               }
             }
             stage('3.7.3 Push') {
               steps {
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3'
-                retry(3) {
-                  sh 'docker push $DOCKER_REGISTRY/python:3'
-                }
+                sh 'docker push $DOCKER_REGISTRY/python:3'
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.7'
-                retry(3) {
-                  sh 'docker push $DOCKER_REGISTRY/python:3.7'
-                }
+                sh 'docker push $DOCKER_REGISTRY/python:3.7'
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.7.3'
-                retry(3) {
-                  sh 'docker push $DOCKER_REGISTRY/python:3.7.3'
-                }
+                sh 'docker push $DOCKER_REGISTRY/python:3.7.3'
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:latest'
-                retry(3) {
-                  sh 'docker push $DOCKER_REGISTRY/python:latest'
-                }
+                sh 'docker push $DOCKER_REGISTRY/python:latest'
               }
             }
           }
