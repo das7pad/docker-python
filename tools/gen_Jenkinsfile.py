@@ -87,17 +87,21 @@ stage('%(version)s') {
     stages {
         stage('%(version)s Build') {
             steps {
-                sh '''docker build --tag $IMAGE \\
-                        --build-arg PYTHON_VERSION=%(version)s \\
-                        --file %(major_minor)s/stretch/Dockerfile \\
-                        .
-                '''
+                retry(10) {
+                    sh '''docker build --tag $IMAGE \\
+                            --build-arg PYTHON_VERSION=%(version)s \\
+                            --file %(major_minor)s/stretch/Dockerfile \\
+                            .
+                    '''
+                }
             }
         }
         stage('%(version)s Test') {
             steps {
                 unstash 'official-images'
-                sh 'official-images/test/run.sh $IMAGE'
+                retry(3) {
+                    sh 'official-images/test/run.sh $IMAGE'
+                }
             }
         }
         stage('%(version)s Push') {
@@ -120,7 +124,9 @@ stage('%(version)s') {
 
 TAGS = indent(8, """
 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:%(tag)s'
-sh 'docker push $DOCKER_REGISTRY/python:%(tag)s'
+retry(3) {
+    sh 'docker push $DOCKER_REGISTRY/python:%(tag)s'
+}
 sh 'docker rmi $DOCKER_REGISTRY/python:%(tag)s'
 """)
 

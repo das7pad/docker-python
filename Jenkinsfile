@@ -35,29 +35,39 @@ pipeline {
           stages {
             stage('2.7.16 Build') {
               steps {
-                sh '''docker build --tag $IMAGE \
-                    --build-arg PYTHON_VERSION=2.7.16 \
-                    --file 2.7/stretch/Dockerfile \
-                    .
-                '''
+                retry(10) {
+                  sh '''docker build --tag $IMAGE \
+                      --build-arg PYTHON_VERSION=2.7.16 \
+                      --file 2.7/stretch/Dockerfile \
+                      .
+                  '''
+                }
               }
             }
             stage('2.7.16 Test') {
               steps {
                 unstash 'official-images'
-                sh 'official-images/test/run.sh $IMAGE'
+                retry(3) {
+                  sh 'official-images/test/run.sh $IMAGE'
+                }
               }
             }
             stage('2.7.16 Push') {
               steps {
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:2'
-                sh 'docker push $DOCKER_REGISTRY/python:2'
+                retry(3) {
+                  sh 'docker push $DOCKER_REGISTRY/python:2'
+                }
                 sh 'docker rmi $DOCKER_REGISTRY/python:2'
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:2.7'
-                sh 'docker push $DOCKER_REGISTRY/python:2.7'
+                retry(3) {
+                  sh 'docker push $DOCKER_REGISTRY/python:2.7'
+                }
                 sh 'docker rmi $DOCKER_REGISTRY/python:2.7'
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:2.7.16'
-                sh 'docker push $DOCKER_REGISTRY/python:2.7.16'
+                retry(3) {
+                  sh 'docker push $DOCKER_REGISTRY/python:2.7.16'
+                }
                 sh 'docker rmi $DOCKER_REGISTRY/python:2.7.16'
               }
             }
@@ -82,23 +92,29 @@ pipeline {
           stages {
             stage('3.5.3 Build') {
               steps {
-                sh '''docker build --tag $IMAGE \
-                    --build-arg PYTHON_VERSION=3.5.3 \
-                    --file 3.5/stretch/Dockerfile \
-                    .
-                '''
+                retry(10) {
+                  sh '''docker build --tag $IMAGE \
+                      --build-arg PYTHON_VERSION=3.5.3 \
+                      --file 3.5/stretch/Dockerfile \
+                      .
+                  '''
+                }
               }
             }
             stage('3.5.3 Test') {
               steps {
                 unstash 'official-images'
-                sh 'official-images/test/run.sh $IMAGE'
+                retry(3) {
+                  sh 'official-images/test/run.sh $IMAGE'
+                }
               }
             }
             stage('3.5.3 Push') {
               steps {
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.5.3'
-                sh 'docker push $DOCKER_REGISTRY/python:3.5.3'
+                retry(3) {
+                  sh 'docker push $DOCKER_REGISTRY/python:3.5.3'
+                }
                 sh 'docker rmi $DOCKER_REGISTRY/python:3.5.3'
               }
             }
@@ -123,23 +139,29 @@ pipeline {
           stages {
             stage('3.5.4 Build') {
               steps {
-                sh '''docker build --tag $IMAGE \
-                    --build-arg PYTHON_VERSION=3.5.4 \
-                    --file 3.5/stretch/Dockerfile \
-                    .
-                '''
+                retry(10) {
+                  sh '''docker build --tag $IMAGE \
+                      --build-arg PYTHON_VERSION=3.5.4 \
+                      --file 3.5/stretch/Dockerfile \
+                      .
+                  '''
+                }
               }
             }
             stage('3.5.4 Test') {
               steps {
                 unstash 'official-images'
-                sh 'official-images/test/run.sh $IMAGE'
+                retry(3) {
+                  sh 'official-images/test/run.sh $IMAGE'
+                }
               }
             }
             stage('3.5.4 Push') {
               steps {
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.5.4'
-                sh 'docker push $DOCKER_REGISTRY/python:3.5.4'
+                retry(3) {
+                  sh 'docker push $DOCKER_REGISTRY/python:3.5.4'
+                }
                 sh 'docker rmi $DOCKER_REGISTRY/python:3.5.4'
               }
             }
@@ -164,23 +186,29 @@ pipeline {
           stages {
             stage('3.5.5 Build') {
               steps {
-                sh '''docker build --tag $IMAGE \
-                    --build-arg PYTHON_VERSION=3.5.5 \
-                    --file 3.5/stretch/Dockerfile \
-                    .
-                '''
+                retry(10) {
+                  sh '''docker build --tag $IMAGE \
+                      --build-arg PYTHON_VERSION=3.5.5 \
+                      --file 3.5/stretch/Dockerfile \
+                      .
+                  '''
+                }
               }
             }
             stage('3.5.5 Test') {
               steps {
                 unstash 'official-images'
-                sh 'official-images/test/run.sh $IMAGE'
+                retry(3) {
+                  sh 'official-images/test/run.sh $IMAGE'
+                }
               }
             }
             stage('3.5.5 Push') {
               steps {
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.5.5'
-                sh 'docker push $DOCKER_REGISTRY/python:3.5.5'
+                retry(3) {
+                  sh 'docker push $DOCKER_REGISTRY/python:3.5.5'
+                }
                 sh 'docker rmi $DOCKER_REGISTRY/python:3.5.5'
               }
             }
@@ -205,26 +233,34 @@ pipeline {
           stages {
             stage('3.5.6 Build') {
               steps {
-                sh '''docker build --tag $IMAGE \
-                    --build-arg PYTHON_VERSION=3.5.6 \
-                    --file 3.5/stretch/Dockerfile \
-                    .
-                '''
+                retry(10) {
+                  sh '''docker build --tag $IMAGE \
+                      --build-arg PYTHON_VERSION=3.5.6 \
+                      --file 3.5/stretch/Dockerfile \
+                      .
+                  '''
+                }
               }
             }
             stage('3.5.6 Test') {
               steps {
                 unstash 'official-images'
-                sh 'official-images/test/run.sh $IMAGE'
+                retry(3) {
+                  sh 'official-images/test/run.sh $IMAGE'
+                }
               }
             }
             stage('3.5.6 Push') {
               steps {
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.5'
-                sh 'docker push $DOCKER_REGISTRY/python:3.5'
+                retry(3) {
+                  sh 'docker push $DOCKER_REGISTRY/python:3.5'
+                }
                 sh 'docker rmi $DOCKER_REGISTRY/python:3.5'
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.5.6'
-                sh 'docker push $DOCKER_REGISTRY/python:3.5.6'
+                retry(3) {
+                  sh 'docker push $DOCKER_REGISTRY/python:3.5.6'
+                }
                 sh 'docker rmi $DOCKER_REGISTRY/python:3.5.6'
               }
             }
@@ -249,23 +285,29 @@ pipeline {
           stages {
             stage('3.6.0 Build') {
               steps {
-                sh '''docker build --tag $IMAGE \
-                    --build-arg PYTHON_VERSION=3.6.0 \
-                    --file 3.6/stretch/Dockerfile \
-                    .
-                '''
+                retry(10) {
+                  sh '''docker build --tag $IMAGE \
+                      --build-arg PYTHON_VERSION=3.6.0 \
+                      --file 3.6/stretch/Dockerfile \
+                      .
+                  '''
+                }
               }
             }
             stage('3.6.0 Test') {
               steps {
                 unstash 'official-images'
-                sh 'official-images/test/run.sh $IMAGE'
+                retry(3) {
+                  sh 'official-images/test/run.sh $IMAGE'
+                }
               }
             }
             stage('3.6.0 Push') {
               steps {
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.0'
-                sh 'docker push $DOCKER_REGISTRY/python:3.6.0'
+                retry(3) {
+                  sh 'docker push $DOCKER_REGISTRY/python:3.6.0'
+                }
                 sh 'docker rmi $DOCKER_REGISTRY/python:3.6.0'
               }
             }
@@ -290,23 +332,29 @@ pipeline {
           stages {
             stage('3.6.1 Build') {
               steps {
-                sh '''docker build --tag $IMAGE \
-                    --build-arg PYTHON_VERSION=3.6.1 \
-                    --file 3.6/stretch/Dockerfile \
-                    .
-                '''
+                retry(10) {
+                  sh '''docker build --tag $IMAGE \
+                      --build-arg PYTHON_VERSION=3.6.1 \
+                      --file 3.6/stretch/Dockerfile \
+                      .
+                  '''
+                }
               }
             }
             stage('3.6.1 Test') {
               steps {
                 unstash 'official-images'
-                sh 'official-images/test/run.sh $IMAGE'
+                retry(3) {
+                  sh 'official-images/test/run.sh $IMAGE'
+                }
               }
             }
             stage('3.6.1 Push') {
               steps {
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.1'
-                sh 'docker push $DOCKER_REGISTRY/python:3.6.1'
+                retry(3) {
+                  sh 'docker push $DOCKER_REGISTRY/python:3.6.1'
+                }
                 sh 'docker rmi $DOCKER_REGISTRY/python:3.6.1'
               }
             }
@@ -331,23 +379,29 @@ pipeline {
           stages {
             stage('3.6.2 Build') {
               steps {
-                sh '''docker build --tag $IMAGE \
-                    --build-arg PYTHON_VERSION=3.6.2 \
-                    --file 3.6/stretch/Dockerfile \
-                    .
-                '''
+                retry(10) {
+                  sh '''docker build --tag $IMAGE \
+                      --build-arg PYTHON_VERSION=3.6.2 \
+                      --file 3.6/stretch/Dockerfile \
+                      .
+                  '''
+                }
               }
             }
             stage('3.6.2 Test') {
               steps {
                 unstash 'official-images'
-                sh 'official-images/test/run.sh $IMAGE'
+                retry(3) {
+                  sh 'official-images/test/run.sh $IMAGE'
+                }
               }
             }
             stage('3.6.2 Push') {
               steps {
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.2'
-                sh 'docker push $DOCKER_REGISTRY/python:3.6.2'
+                retry(3) {
+                  sh 'docker push $DOCKER_REGISTRY/python:3.6.2'
+                }
                 sh 'docker rmi $DOCKER_REGISTRY/python:3.6.2'
               }
             }
@@ -372,23 +426,29 @@ pipeline {
           stages {
             stage('3.6.3 Build') {
               steps {
-                sh '''docker build --tag $IMAGE \
-                    --build-arg PYTHON_VERSION=3.6.3 \
-                    --file 3.6/stretch/Dockerfile \
-                    .
-                '''
+                retry(10) {
+                  sh '''docker build --tag $IMAGE \
+                      --build-arg PYTHON_VERSION=3.6.3 \
+                      --file 3.6/stretch/Dockerfile \
+                      .
+                  '''
+                }
               }
             }
             stage('3.6.3 Test') {
               steps {
                 unstash 'official-images'
-                sh 'official-images/test/run.sh $IMAGE'
+                retry(3) {
+                  sh 'official-images/test/run.sh $IMAGE'
+                }
               }
             }
             stage('3.6.3 Push') {
               steps {
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.3'
-                sh 'docker push $DOCKER_REGISTRY/python:3.6.3'
+                retry(3) {
+                  sh 'docker push $DOCKER_REGISTRY/python:3.6.3'
+                }
                 sh 'docker rmi $DOCKER_REGISTRY/python:3.6.3'
               }
             }
@@ -413,23 +473,29 @@ pipeline {
           stages {
             stage('3.6.4 Build') {
               steps {
-                sh '''docker build --tag $IMAGE \
-                    --build-arg PYTHON_VERSION=3.6.4 \
-                    --file 3.6/stretch/Dockerfile \
-                    .
-                '''
+                retry(10) {
+                  sh '''docker build --tag $IMAGE \
+                      --build-arg PYTHON_VERSION=3.6.4 \
+                      --file 3.6/stretch/Dockerfile \
+                      .
+                  '''
+                }
               }
             }
             stage('3.6.4 Test') {
               steps {
                 unstash 'official-images'
-                sh 'official-images/test/run.sh $IMAGE'
+                retry(3) {
+                  sh 'official-images/test/run.sh $IMAGE'
+                }
               }
             }
             stage('3.6.4 Push') {
               steps {
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.4'
-                sh 'docker push $DOCKER_REGISTRY/python:3.6.4'
+                retry(3) {
+                  sh 'docker push $DOCKER_REGISTRY/python:3.6.4'
+                }
                 sh 'docker rmi $DOCKER_REGISTRY/python:3.6.4'
               }
             }
@@ -454,23 +520,29 @@ pipeline {
           stages {
             stage('3.6.5 Build') {
               steps {
-                sh '''docker build --tag $IMAGE \
-                    --build-arg PYTHON_VERSION=3.6.5 \
-                    --file 3.6/stretch/Dockerfile \
-                    .
-                '''
+                retry(10) {
+                  sh '''docker build --tag $IMAGE \
+                      --build-arg PYTHON_VERSION=3.6.5 \
+                      --file 3.6/stretch/Dockerfile \
+                      .
+                  '''
+                }
               }
             }
             stage('3.6.5 Test') {
               steps {
                 unstash 'official-images'
-                sh 'official-images/test/run.sh $IMAGE'
+                retry(3) {
+                  sh 'official-images/test/run.sh $IMAGE'
+                }
               }
             }
             stage('3.6.5 Push') {
               steps {
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.5'
-                sh 'docker push $DOCKER_REGISTRY/python:3.6.5'
+                retry(3) {
+                  sh 'docker push $DOCKER_REGISTRY/python:3.6.5'
+                }
                 sh 'docker rmi $DOCKER_REGISTRY/python:3.6.5'
               }
             }
@@ -495,23 +567,29 @@ pipeline {
           stages {
             stage('3.6.6 Build') {
               steps {
-                sh '''docker build --tag $IMAGE \
-                    --build-arg PYTHON_VERSION=3.6.6 \
-                    --file 3.6/stretch/Dockerfile \
-                    .
-                '''
+                retry(10) {
+                  sh '''docker build --tag $IMAGE \
+                      --build-arg PYTHON_VERSION=3.6.6 \
+                      --file 3.6/stretch/Dockerfile \
+                      .
+                  '''
+                }
               }
             }
             stage('3.6.6 Test') {
               steps {
                 unstash 'official-images'
-                sh 'official-images/test/run.sh $IMAGE'
+                retry(3) {
+                  sh 'official-images/test/run.sh $IMAGE'
+                }
               }
             }
             stage('3.6.6 Push') {
               steps {
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.6'
-                sh 'docker push $DOCKER_REGISTRY/python:3.6.6'
+                retry(3) {
+                  sh 'docker push $DOCKER_REGISTRY/python:3.6.6'
+                }
                 sh 'docker rmi $DOCKER_REGISTRY/python:3.6.6'
               }
             }
@@ -536,23 +614,29 @@ pipeline {
           stages {
             stage('3.6.7 Build') {
               steps {
-                sh '''docker build --tag $IMAGE \
-                    --build-arg PYTHON_VERSION=3.6.7 \
-                    --file 3.6/stretch/Dockerfile \
-                    .
-                '''
+                retry(10) {
+                  sh '''docker build --tag $IMAGE \
+                      --build-arg PYTHON_VERSION=3.6.7 \
+                      --file 3.6/stretch/Dockerfile \
+                      .
+                  '''
+                }
               }
             }
             stage('3.6.7 Test') {
               steps {
                 unstash 'official-images'
-                sh 'official-images/test/run.sh $IMAGE'
+                retry(3) {
+                  sh 'official-images/test/run.sh $IMAGE'
+                }
               }
             }
             stage('3.6.7 Push') {
               steps {
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.7'
-                sh 'docker push $DOCKER_REGISTRY/python:3.6.7'
+                retry(3) {
+                  sh 'docker push $DOCKER_REGISTRY/python:3.6.7'
+                }
                 sh 'docker rmi $DOCKER_REGISTRY/python:3.6.7'
               }
             }
@@ -577,26 +661,34 @@ pipeline {
           stages {
             stage('3.6.8 Build') {
               steps {
-                sh '''docker build --tag $IMAGE \
-                    --build-arg PYTHON_VERSION=3.6.8 \
-                    --file 3.6/stretch/Dockerfile \
-                    .
-                '''
+                retry(10) {
+                  sh '''docker build --tag $IMAGE \
+                      --build-arg PYTHON_VERSION=3.6.8 \
+                      --file 3.6/stretch/Dockerfile \
+                      .
+                  '''
+                }
               }
             }
             stage('3.6.8 Test') {
               steps {
                 unstash 'official-images'
-                sh 'official-images/test/run.sh $IMAGE'
+                retry(3) {
+                  sh 'official-images/test/run.sh $IMAGE'
+                }
               }
             }
             stage('3.6.8 Push') {
               steps {
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.6'
-                sh 'docker push $DOCKER_REGISTRY/python:3.6'
+                retry(3) {
+                  sh 'docker push $DOCKER_REGISTRY/python:3.6'
+                }
                 sh 'docker rmi $DOCKER_REGISTRY/python:3.6'
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.8'
-                sh 'docker push $DOCKER_REGISTRY/python:3.6.8'
+                retry(3) {
+                  sh 'docker push $DOCKER_REGISTRY/python:3.6.8'
+                }
                 sh 'docker rmi $DOCKER_REGISTRY/python:3.6.8'
               }
             }
@@ -621,23 +713,29 @@ pipeline {
           stages {
             stage('3.7.0 Build') {
               steps {
-                sh '''docker build --tag $IMAGE \
-                    --build-arg PYTHON_VERSION=3.7.0 \
-                    --file 3.7/stretch/Dockerfile \
-                    .
-                '''
+                retry(10) {
+                  sh '''docker build --tag $IMAGE \
+                      --build-arg PYTHON_VERSION=3.7.0 \
+                      --file 3.7/stretch/Dockerfile \
+                      .
+                  '''
+                }
               }
             }
             stage('3.7.0 Test') {
               steps {
                 unstash 'official-images'
-                sh 'official-images/test/run.sh $IMAGE'
+                retry(3) {
+                  sh 'official-images/test/run.sh $IMAGE'
+                }
               }
             }
             stage('3.7.0 Push') {
               steps {
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.7.0'
-                sh 'docker push $DOCKER_REGISTRY/python:3.7.0'
+                retry(3) {
+                  sh 'docker push $DOCKER_REGISTRY/python:3.7.0'
+                }
                 sh 'docker rmi $DOCKER_REGISTRY/python:3.7.0'
               }
             }
@@ -662,23 +760,29 @@ pipeline {
           stages {
             stage('3.7.1 Build') {
               steps {
-                sh '''docker build --tag $IMAGE \
-                    --build-arg PYTHON_VERSION=3.7.1 \
-                    --file 3.7/stretch/Dockerfile \
-                    .
-                '''
+                retry(10) {
+                  sh '''docker build --tag $IMAGE \
+                      --build-arg PYTHON_VERSION=3.7.1 \
+                      --file 3.7/stretch/Dockerfile \
+                      .
+                  '''
+                }
               }
             }
             stage('3.7.1 Test') {
               steps {
                 unstash 'official-images'
-                sh 'official-images/test/run.sh $IMAGE'
+                retry(3) {
+                  sh 'official-images/test/run.sh $IMAGE'
+                }
               }
             }
             stage('3.7.1 Push') {
               steps {
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.7.1'
-                sh 'docker push $DOCKER_REGISTRY/python:3.7.1'
+                retry(3) {
+                  sh 'docker push $DOCKER_REGISTRY/python:3.7.1'
+                }
                 sh 'docker rmi $DOCKER_REGISTRY/python:3.7.1'
               }
             }
@@ -703,23 +807,29 @@ pipeline {
           stages {
             stage('3.7.2 Build') {
               steps {
-                sh '''docker build --tag $IMAGE \
-                    --build-arg PYTHON_VERSION=3.7.2 \
-                    --file 3.7/stretch/Dockerfile \
-                    .
-                '''
+                retry(10) {
+                  sh '''docker build --tag $IMAGE \
+                      --build-arg PYTHON_VERSION=3.7.2 \
+                      --file 3.7/stretch/Dockerfile \
+                      .
+                  '''
+                }
               }
             }
             stage('3.7.2 Test') {
               steps {
                 unstash 'official-images'
-                sh 'official-images/test/run.sh $IMAGE'
+                retry(3) {
+                  sh 'official-images/test/run.sh $IMAGE'
+                }
               }
             }
             stage('3.7.2 Push') {
               steps {
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.7.2'
-                sh 'docker push $DOCKER_REGISTRY/python:3.7.2'
+                retry(3) {
+                  sh 'docker push $DOCKER_REGISTRY/python:3.7.2'
+                }
                 sh 'docker rmi $DOCKER_REGISTRY/python:3.7.2'
               }
             }
@@ -744,32 +854,44 @@ pipeline {
           stages {
             stage('3.7.3 Build') {
               steps {
-                sh '''docker build --tag $IMAGE \
-                    --build-arg PYTHON_VERSION=3.7.3 \
-                    --file 3.7/stretch/Dockerfile \
-                    .
-                '''
+                retry(10) {
+                  sh '''docker build --tag $IMAGE \
+                      --build-arg PYTHON_VERSION=3.7.3 \
+                      --file 3.7/stretch/Dockerfile \
+                      .
+                  '''
+                }
               }
             }
             stage('3.7.3 Test') {
               steps {
                 unstash 'official-images'
-                sh 'official-images/test/run.sh $IMAGE'
+                retry(3) {
+                  sh 'official-images/test/run.sh $IMAGE'
+                }
               }
             }
             stage('3.7.3 Push') {
               steps {
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3'
-                sh 'docker push $DOCKER_REGISTRY/python:3'
+                retry(3) {
+                  sh 'docker push $DOCKER_REGISTRY/python:3'
+                }
                 sh 'docker rmi $DOCKER_REGISTRY/python:3'
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.7'
-                sh 'docker push $DOCKER_REGISTRY/python:3.7'
+                retry(3) {
+                  sh 'docker push $DOCKER_REGISTRY/python:3.7'
+                }
                 sh 'docker rmi $DOCKER_REGISTRY/python:3.7'
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.7.3'
-                sh 'docker push $DOCKER_REGISTRY/python:3.7.3'
+                retry(3) {
+                  sh 'docker push $DOCKER_REGISTRY/python:3.7.3'
+                }
                 sh 'docker rmi $DOCKER_REGISTRY/python:3.7.3'
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:latest'
-                sh 'docker push $DOCKER_REGISTRY/python:latest'
+                retry(3) {
+                  sh 'docker push $DOCKER_REGISTRY/python:latest'
+                }
                 sh 'docker rmi $DOCKER_REGISTRY/python:latest'
               }
             }
