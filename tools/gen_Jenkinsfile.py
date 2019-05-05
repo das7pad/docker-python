@@ -82,7 +82,7 @@ stage('%(version)s') {
         label 'docker_builder'
     }
     environment {
-        IMAGE = "python:%(major_minor)s-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+        IMAGE = "python:%(version)s-stretch-$BRANCH_NAME-$BUILD_NUMBER"
     }
     stages {
         stage('%(version)s Build') {
