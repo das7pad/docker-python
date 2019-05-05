@@ -31,8 +31,15 @@ pipeline {
           }
           environment {
             IMAGE = "python:2.7.16-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE_CACHE = "$IMAGE-cache"
           }
           stages {
+            stage('2.7.16 Pull Cache') {
+              steps {
+                sh 'docker pull $DOCKER_REGISTRY/python:2.7.16 || true'
+                sh 'docker tag $IMAGE_REPO:2.7.16 $IMAGE_CACHE || true'
+              }
+            }
             stage('2.7.16 Build') {
               steps {
                 retry(10) {
@@ -74,7 +81,7 @@ pipeline {
           }
           post {
             cleanup {
-              sh 'docker rmi --force $IMAGE'
+              sh 'docker rmi --force $IMAGE $IMAGE_CACHE'
               sh '''test -e official-images/test/clean.sh \
                 && official-images/test/clean.sh \
                 || true
@@ -88,8 +95,15 @@ pipeline {
           }
           environment {
             IMAGE = "python:3.5.3-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE_CACHE = "$IMAGE-cache"
           }
           stages {
+            stage('3.5.3 Pull Cache') {
+              steps {
+                sh 'docker pull $DOCKER_REGISTRY/python:3.5.3 || true'
+                sh 'docker tag $IMAGE_REPO:3.5.3 $IMAGE_CACHE || true'
+              }
+            }
             stage('3.5.3 Build') {
               steps {
                 retry(10) {
@@ -121,7 +135,7 @@ pipeline {
           }
           post {
             cleanup {
-              sh 'docker rmi --force $IMAGE'
+              sh 'docker rmi --force $IMAGE $IMAGE_CACHE'
               sh '''test -e official-images/test/clean.sh \
                 && official-images/test/clean.sh \
                 || true
@@ -135,8 +149,15 @@ pipeline {
           }
           environment {
             IMAGE = "python:3.5.4-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE_CACHE = "$IMAGE-cache"
           }
           stages {
+            stage('3.5.4 Pull Cache') {
+              steps {
+                sh 'docker pull $DOCKER_REGISTRY/python:3.5.4 || true'
+                sh 'docker tag $IMAGE_REPO:3.5.4 $IMAGE_CACHE || true'
+              }
+            }
             stage('3.5.4 Build') {
               steps {
                 retry(10) {
@@ -168,7 +189,7 @@ pipeline {
           }
           post {
             cleanup {
-              sh 'docker rmi --force $IMAGE'
+              sh 'docker rmi --force $IMAGE $IMAGE_CACHE'
               sh '''test -e official-images/test/clean.sh \
                 && official-images/test/clean.sh \
                 || true
@@ -182,8 +203,15 @@ pipeline {
           }
           environment {
             IMAGE = "python:3.5.5-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE_CACHE = "$IMAGE-cache"
           }
           stages {
+            stage('3.5.5 Pull Cache') {
+              steps {
+                sh 'docker pull $DOCKER_REGISTRY/python:3.5.5 || true'
+                sh 'docker tag $IMAGE_REPO:3.5.5 $IMAGE_CACHE || true'
+              }
+            }
             stage('3.5.5 Build') {
               steps {
                 retry(10) {
@@ -215,7 +243,7 @@ pipeline {
           }
           post {
             cleanup {
-              sh 'docker rmi --force $IMAGE'
+              sh 'docker rmi --force $IMAGE $IMAGE_CACHE'
               sh '''test -e official-images/test/clean.sh \
                 && official-images/test/clean.sh \
                 || true
@@ -229,8 +257,15 @@ pipeline {
           }
           environment {
             IMAGE = "python:3.5.6-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE_CACHE = "$IMAGE-cache"
           }
           stages {
+            stage('3.5.6 Pull Cache') {
+              steps {
+                sh 'docker pull $DOCKER_REGISTRY/python:3.5.6 || true'
+                sh 'docker tag $IMAGE_REPO:3.5.6 $IMAGE_CACHE || true'
+              }
+            }
             stage('3.5.6 Build') {
               steps {
                 retry(10) {
@@ -267,7 +302,7 @@ pipeline {
           }
           post {
             cleanup {
-              sh 'docker rmi --force $IMAGE'
+              sh 'docker rmi --force $IMAGE $IMAGE_CACHE'
               sh '''test -e official-images/test/clean.sh \
                 && official-images/test/clean.sh \
                 || true
@@ -281,8 +316,15 @@ pipeline {
           }
           environment {
             IMAGE = "python:3.6.0-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE_CACHE = "$IMAGE-cache"
           }
           stages {
+            stage('3.6.0 Pull Cache') {
+              steps {
+                sh 'docker pull $DOCKER_REGISTRY/python:3.6.0 || true'
+                sh 'docker tag $IMAGE_REPO:3.6.0 $IMAGE_CACHE || true'
+              }
+            }
             stage('3.6.0 Build') {
               steps {
                 retry(10) {
@@ -314,7 +356,7 @@ pipeline {
           }
           post {
             cleanup {
-              sh 'docker rmi --force $IMAGE'
+              sh 'docker rmi --force $IMAGE $IMAGE_CACHE'
               sh '''test -e official-images/test/clean.sh \
                 && official-images/test/clean.sh \
                 || true
@@ -328,8 +370,15 @@ pipeline {
           }
           environment {
             IMAGE = "python:3.6.1-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE_CACHE = "$IMAGE-cache"
           }
           stages {
+            stage('3.6.1 Pull Cache') {
+              steps {
+                sh 'docker pull $DOCKER_REGISTRY/python:3.6.1 || true'
+                sh 'docker tag $IMAGE_REPO:3.6.1 $IMAGE_CACHE || true'
+              }
+            }
             stage('3.6.1 Build') {
               steps {
                 retry(10) {
@@ -361,7 +410,7 @@ pipeline {
           }
           post {
             cleanup {
-              sh 'docker rmi --force $IMAGE'
+              sh 'docker rmi --force $IMAGE $IMAGE_CACHE'
               sh '''test -e official-images/test/clean.sh \
                 && official-images/test/clean.sh \
                 || true
@@ -375,8 +424,15 @@ pipeline {
           }
           environment {
             IMAGE = "python:3.6.2-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE_CACHE = "$IMAGE-cache"
           }
           stages {
+            stage('3.6.2 Pull Cache') {
+              steps {
+                sh 'docker pull $DOCKER_REGISTRY/python:3.6.2 || true'
+                sh 'docker tag $IMAGE_REPO:3.6.2 $IMAGE_CACHE || true'
+              }
+            }
             stage('3.6.2 Build') {
               steps {
                 retry(10) {
@@ -408,7 +464,7 @@ pipeline {
           }
           post {
             cleanup {
-              sh 'docker rmi --force $IMAGE'
+              sh 'docker rmi --force $IMAGE $IMAGE_CACHE'
               sh '''test -e official-images/test/clean.sh \
                 && official-images/test/clean.sh \
                 || true
@@ -422,8 +478,15 @@ pipeline {
           }
           environment {
             IMAGE = "python:3.6.3-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE_CACHE = "$IMAGE-cache"
           }
           stages {
+            stage('3.6.3 Pull Cache') {
+              steps {
+                sh 'docker pull $DOCKER_REGISTRY/python:3.6.3 || true'
+                sh 'docker tag $IMAGE_REPO:3.6.3 $IMAGE_CACHE || true'
+              }
+            }
             stage('3.6.3 Build') {
               steps {
                 retry(10) {
@@ -455,7 +518,7 @@ pipeline {
           }
           post {
             cleanup {
-              sh 'docker rmi --force $IMAGE'
+              sh 'docker rmi --force $IMAGE $IMAGE_CACHE'
               sh '''test -e official-images/test/clean.sh \
                 && official-images/test/clean.sh \
                 || true
@@ -469,8 +532,15 @@ pipeline {
           }
           environment {
             IMAGE = "python:3.6.4-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE_CACHE = "$IMAGE-cache"
           }
           stages {
+            stage('3.6.4 Pull Cache') {
+              steps {
+                sh 'docker pull $DOCKER_REGISTRY/python:3.6.4 || true'
+                sh 'docker tag $IMAGE_REPO:3.6.4 $IMAGE_CACHE || true'
+              }
+            }
             stage('3.6.4 Build') {
               steps {
                 retry(10) {
@@ -502,7 +572,7 @@ pipeline {
           }
           post {
             cleanup {
-              sh 'docker rmi --force $IMAGE'
+              sh 'docker rmi --force $IMAGE $IMAGE_CACHE'
               sh '''test -e official-images/test/clean.sh \
                 && official-images/test/clean.sh \
                 || true
@@ -516,8 +586,15 @@ pipeline {
           }
           environment {
             IMAGE = "python:3.6.5-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE_CACHE = "$IMAGE-cache"
           }
           stages {
+            stage('3.6.5 Pull Cache') {
+              steps {
+                sh 'docker pull $DOCKER_REGISTRY/python:3.6.5 || true'
+                sh 'docker tag $IMAGE_REPO:3.6.5 $IMAGE_CACHE || true'
+              }
+            }
             stage('3.6.5 Build') {
               steps {
                 retry(10) {
@@ -549,7 +626,7 @@ pipeline {
           }
           post {
             cleanup {
-              sh 'docker rmi --force $IMAGE'
+              sh 'docker rmi --force $IMAGE $IMAGE_CACHE'
               sh '''test -e official-images/test/clean.sh \
                 && official-images/test/clean.sh \
                 || true
@@ -563,8 +640,15 @@ pipeline {
           }
           environment {
             IMAGE = "python:3.6.6-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE_CACHE = "$IMAGE-cache"
           }
           stages {
+            stage('3.6.6 Pull Cache') {
+              steps {
+                sh 'docker pull $DOCKER_REGISTRY/python:3.6.6 || true'
+                sh 'docker tag $IMAGE_REPO:3.6.6 $IMAGE_CACHE || true'
+              }
+            }
             stage('3.6.6 Build') {
               steps {
                 retry(10) {
@@ -596,7 +680,7 @@ pipeline {
           }
           post {
             cleanup {
-              sh 'docker rmi --force $IMAGE'
+              sh 'docker rmi --force $IMAGE $IMAGE_CACHE'
               sh '''test -e official-images/test/clean.sh \
                 && official-images/test/clean.sh \
                 || true
@@ -610,8 +694,15 @@ pipeline {
           }
           environment {
             IMAGE = "python:3.6.7-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE_CACHE = "$IMAGE-cache"
           }
           stages {
+            stage('3.6.7 Pull Cache') {
+              steps {
+                sh 'docker pull $DOCKER_REGISTRY/python:3.6.7 || true'
+                sh 'docker tag $IMAGE_REPO:3.6.7 $IMAGE_CACHE || true'
+              }
+            }
             stage('3.6.7 Build') {
               steps {
                 retry(10) {
@@ -643,7 +734,7 @@ pipeline {
           }
           post {
             cleanup {
-              sh 'docker rmi --force $IMAGE'
+              sh 'docker rmi --force $IMAGE $IMAGE_CACHE'
               sh '''test -e official-images/test/clean.sh \
                 && official-images/test/clean.sh \
                 || true
@@ -657,8 +748,15 @@ pipeline {
           }
           environment {
             IMAGE = "python:3.6.8-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE_CACHE = "$IMAGE-cache"
           }
           stages {
+            stage('3.6.8 Pull Cache') {
+              steps {
+                sh 'docker pull $DOCKER_REGISTRY/python:3.6.8 || true'
+                sh 'docker tag $IMAGE_REPO:3.6.8 $IMAGE_CACHE || true'
+              }
+            }
             stage('3.6.8 Build') {
               steps {
                 retry(10) {
@@ -695,7 +793,7 @@ pipeline {
           }
           post {
             cleanup {
-              sh 'docker rmi --force $IMAGE'
+              sh 'docker rmi --force $IMAGE $IMAGE_CACHE'
               sh '''test -e official-images/test/clean.sh \
                 && official-images/test/clean.sh \
                 || true
@@ -709,8 +807,15 @@ pipeline {
           }
           environment {
             IMAGE = "python:3.7.0-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE_CACHE = "$IMAGE-cache"
           }
           stages {
+            stage('3.7.0 Pull Cache') {
+              steps {
+                sh 'docker pull $DOCKER_REGISTRY/python:3.7.0 || true'
+                sh 'docker tag $IMAGE_REPO:3.7.0 $IMAGE_CACHE || true'
+              }
+            }
             stage('3.7.0 Build') {
               steps {
                 retry(10) {
@@ -742,7 +847,7 @@ pipeline {
           }
           post {
             cleanup {
-              sh 'docker rmi --force $IMAGE'
+              sh 'docker rmi --force $IMAGE $IMAGE_CACHE'
               sh '''test -e official-images/test/clean.sh \
                 && official-images/test/clean.sh \
                 || true
@@ -756,8 +861,15 @@ pipeline {
           }
           environment {
             IMAGE = "python:3.7.1-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE_CACHE = "$IMAGE-cache"
           }
           stages {
+            stage('3.7.1 Pull Cache') {
+              steps {
+                sh 'docker pull $DOCKER_REGISTRY/python:3.7.1 || true'
+                sh 'docker tag $IMAGE_REPO:3.7.1 $IMAGE_CACHE || true'
+              }
+            }
             stage('3.7.1 Build') {
               steps {
                 retry(10) {
@@ -789,7 +901,7 @@ pipeline {
           }
           post {
             cleanup {
-              sh 'docker rmi --force $IMAGE'
+              sh 'docker rmi --force $IMAGE $IMAGE_CACHE'
               sh '''test -e official-images/test/clean.sh \
                 && official-images/test/clean.sh \
                 || true
@@ -803,8 +915,15 @@ pipeline {
           }
           environment {
             IMAGE = "python:3.7.2-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE_CACHE = "$IMAGE-cache"
           }
           stages {
+            stage('3.7.2 Pull Cache') {
+              steps {
+                sh 'docker pull $DOCKER_REGISTRY/python:3.7.2 || true'
+                sh 'docker tag $IMAGE_REPO:3.7.2 $IMAGE_CACHE || true'
+              }
+            }
             stage('3.7.2 Build') {
               steps {
                 retry(10) {
@@ -836,7 +955,7 @@ pipeline {
           }
           post {
             cleanup {
-              sh 'docker rmi --force $IMAGE'
+              sh 'docker rmi --force $IMAGE $IMAGE_CACHE'
               sh '''test -e official-images/test/clean.sh \
                 && official-images/test/clean.sh \
                 || true
@@ -850,8 +969,15 @@ pipeline {
           }
           environment {
             IMAGE = "python:3.7.3-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE_CACHE = "$IMAGE-cache"
           }
           stages {
+            stage('3.7.3 Pull Cache') {
+              steps {
+                sh 'docker pull $DOCKER_REGISTRY/python:3.7.3 || true'
+                sh 'docker tag $IMAGE_REPO:3.7.3 $IMAGE_CACHE || true'
+              }
+            }
             stage('3.7.3 Build') {
               steps {
                 retry(10) {
@@ -898,7 +1024,7 @@ pipeline {
           }
           post {
             cleanup {
-              sh 'docker rmi --force $IMAGE'
+              sh 'docker rmi --force $IMAGE $IMAGE_CACHE'
               sh '''test -e official-images/test/clean.sh \
                 && official-images/test/clean.sh \
                 || true

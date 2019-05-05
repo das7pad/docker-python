@@ -83,8 +83,15 @@ stage('%(version)s') {
     }
     environment {
         IMAGE = "python:%(version)s-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+        IMAGE_CACHE = "$IMAGE-cache"
     }
     stages {
+        stage('%(version)s Pull Cache') {
+            steps {
+                sh 'docker pull $DOCKER_REGISTRY/python:%(version)s || true'
+                sh 'docker tag $IMAGE_REPO:%(version)s $IMAGE_CACHE || true'
+            }
+        }
         stage('%(version)s Build') {
             steps {
                 retry(10) {
@@ -112,7 +119,7 @@ stage('%(version)s') {
     }
     post {
         cleanup {
-            sh 'docker rmi --force $IMAGE'
+            sh 'docker rmi --force $IMAGE $IMAGE_CACHE'
             sh '''test -e official-images/test/clean.sh \\
                 && official-images/test/clean.sh \\
                 || true
