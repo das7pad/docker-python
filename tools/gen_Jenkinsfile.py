@@ -79,7 +79,7 @@ pipeline {
 STAGE = indent(4, """
 stage('%(version)s') {
     agent {
-        label 'docker_builder'
+        label 'docker_builder_python'
     }
     environment {
         IMAGE = "python:%(version)s-stretch-$BRANCH_NAME-$BUILD_NUMBER"

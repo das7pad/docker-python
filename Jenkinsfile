@@ -27,7 +27,7 @@ pipeline {
       parallel {
         stage('2.7.16') {
           agent {
-            label 'docker_builder'
+            label 'docker_builder_python'
           }
           environment {
             IMAGE = "python:2.7.16-stretch-$BRANCH_NAME-$BUILD_NUMBER"
@@ -92,7 +92,7 @@ pipeline {
         }
         stage('3.5.3') {
           agent {
-            label 'docker_builder'
+            label 'docker_builder_python'
           }
           environment {
             IMAGE = "python:3.5.3-stretch-$BRANCH_NAME-$BUILD_NUMBER"
@@ -151,7 +151,7 @@ pipeline {
         }
         stage('3.5.4') {
           agent {
-            label 'docker_builder'
+            label 'docker_builder_python'
           }
           environment {
             IMAGE = "python:3.5.4-stretch-$BRANCH_NAME-$BUILD_NUMBER"
@@ -210,7 +210,7 @@ pipeline {
         }
         stage('3.5.5') {
           agent {
-            label 'docker_builder'
+            label 'docker_builder_python'
           }
           environment {
             IMAGE = "python:3.5.5-stretch-$BRANCH_NAME-$BUILD_NUMBER"
@@ -269,7 +269,7 @@ pipeline {
         }
         stage('3.5.6') {
           agent {
-            label 'docker_builder'
+            label 'docker_builder_python'
           }
           environment {
             IMAGE = "python:3.5.6-stretch-$BRANCH_NAME-$BUILD_NUMBER"
@@ -331,7 +331,7 @@ pipeline {
         }
         stage('3.6.0') {
           agent {
-            label 'docker_builder'
+            label 'docker_builder_python'
           }
           environment {
             IMAGE = "python:3.6.0-stretch-$BRANCH_NAME-$BUILD_NUMBER"
@@ -390,7 +390,7 @@ pipeline {
         }
         stage('3.6.1') {
           agent {
-            label 'docker_builder'
+            label 'docker_builder_python'
           }
           environment {
             IMAGE = "python:3.6.1-stretch-$BRANCH_NAME-$BUILD_NUMBER"
@@ -449,7 +449,7 @@ pipeline {
         }
         stage('3.6.2') {
           agent {
-            label 'docker_builder'
+            label 'docker_builder_python'
           }
           environment {
             IMAGE = "python:3.6.2-stretch-$BRANCH_NAME-$BUILD_NUMBER"
@@ -508,7 +508,7 @@ pipeline {
         }
         stage('3.6.3') {
           agent {
-            label 'docker_builder'
+            label 'docker_builder_python'
           }
           environment {
             IMAGE = "python:3.6.3-stretch-$BRANCH_NAME-$BUILD_NUMBER"
@@ -567,7 +567,7 @@ pipeline {
         }
         stage('3.6.4') {
           agent {
-            label 'docker_builder'
+            label 'docker_builder_python'
           }
           environment {
             IMAGE = "python:3.6.4-stretch-$BRANCH_NAME-$BUILD_NUMBER"
@@ -626,7 +626,7 @@ pipeline {
         }
         stage('3.6.5') {
           agent {
-            label 'docker_builder'
+            label 'docker_builder_python'
           }
           environment {
             IMAGE = "python:3.6.5-stretch-$BRANCH_NAME-$BUILD_NUMBER"
@@ -685,7 +685,7 @@ pipeline {
         }
         stage('3.6.6') {
           agent {
-            label 'docker_builder'
+            label 'docker_builder_python'
           }
           environment {
             IMAGE = "python:3.6.6-stretch-$BRANCH_NAME-$BUILD_NUMBER"
@@ -744,7 +744,7 @@ pipeline {
         }
         stage('3.6.7') {
           agent {
-            label 'docker_builder'
+            label 'docker_builder_python'
           }
           environment {
             IMAGE = "python:3.6.7-stretch-$BRANCH_NAME-$BUILD_NUMBER"
@@ -803,7 +803,7 @@ pipeline {
         }
         stage('3.6.8') {
           agent {
-            label 'docker_builder'
+            label 'docker_builder_python'
           }
           environment {
             IMAGE = "python:3.6.8-stretch-$BRANCH_NAME-$BUILD_NUMBER"
@@ -865,7 +865,7 @@ pipeline {
         }
         stage('3.7.0') {
           agent {
-            label 'docker_builder'
+            label 'docker_builder_python'
           }
           environment {
             IMAGE = "python:3.7.0-stretch-$BRANCH_NAME-$BUILD_NUMBER"
@@ -924,7 +924,7 @@ pipeline {
         }
         stage('3.7.1') {
           agent {
-            label 'docker_builder'
+            label 'docker_builder_python'
           }
           environment {
             IMAGE = "python:3.7.1-stretch-$BRANCH_NAME-$BUILD_NUMBER"
@@ -983,7 +983,7 @@ pipeline {
         }
         stage('3.7.2') {
           agent {
-            label 'docker_builder'
+            label 'docker_builder_python'
           }
           environment {
             IMAGE = "python:3.7.2-stretch-$BRANCH_NAME-$BUILD_NUMBER"
@@ -1042,7 +1042,7 @@ pipeline {
         }
         stage('3.7.3') {
           agent {
-            label 'docker_builder'
+            label 'docker_builder_python'
           }
           environment {
             IMAGE = "python:3.7.3-stretch-$BRANCH_NAME-$BUILD_NUMBER"
