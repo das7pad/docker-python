@@ -88,8 +88,10 @@ stage('%(version)s') {
     stages {
         stage('%(version)s Pull Cache') {
             steps {
-                sh 'docker pull $DOCKER_REGISTRY/python:%(version)s || true'
-                sh 'docker tag $IMAGE_REPO:%(version)s $IMAGE_CACHE || true'
+                sh '''docker pull $DOCKER_REGISTRY/python:%(version)s \\
+                    && docker tag $IMAGE_REPO:%(version)s $IMAGE_CACHE \\
+                    || true
+                '''
             }
         }
         stage('%(version)s Build') {
