@@ -103,6 +103,7 @@ stage('%(version)s') {
                 retry(10) {
                     sh '''docker build --tag $IMAGE \\
                             --build-arg PYTHON_VERSION=%(version)s \\
+                            --cache-from $IMAGE_CACHE \\
                             --file %(major_minor)s/stretch/Dockerfile \\
                             .
                     '''

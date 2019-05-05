@@ -51,6 +51,7 @@ pipeline {
                 retry(10) {
                   sh '''docker build --tag $IMAGE \
                       --build-arg PYTHON_VERSION=2.7.16 \
+                      --cache-from $IMAGE_CACHE \
                       --file 2.7/stretch/Dockerfile \
                       .
                   '''
@@ -117,6 +118,7 @@ pipeline {
                 retry(10) {
                   sh '''docker build --tag $IMAGE \
                       --build-arg PYTHON_VERSION=3.5.3 \
+                      --cache-from $IMAGE_CACHE \
                       --file 3.5/stretch/Dockerfile \
                       .
                   '''
@@ -177,6 +179,7 @@ pipeline {
                 retry(10) {
                   sh '''docker build --tag $IMAGE \
                       --build-arg PYTHON_VERSION=3.5.4 \
+                      --cache-from $IMAGE_CACHE \
                       --file 3.5/stretch/Dockerfile \
                       .
                   '''
@@ -237,6 +240,7 @@ pipeline {
                 retry(10) {
                   sh '''docker build --tag $IMAGE \
                       --build-arg PYTHON_VERSION=3.5.5 \
+                      --cache-from $IMAGE_CACHE \
                       --file 3.5/stretch/Dockerfile \
                       .
                   '''
@@ -297,6 +301,7 @@ pipeline {
                 retry(10) {
                   sh '''docker build --tag $IMAGE \
                       --build-arg PYTHON_VERSION=3.5.6 \
+                      --cache-from $IMAGE_CACHE \
                       --file 3.5/stretch/Dockerfile \
                       .
                   '''
@@ -360,6 +365,7 @@ pipeline {
                 retry(10) {
                   sh '''docker build --tag $IMAGE \
                       --build-arg PYTHON_VERSION=3.6.0 \
+                      --cache-from $IMAGE_CACHE \
                       --file 3.6/stretch/Dockerfile \
                       .
                   '''
@@ -420,6 +426,7 @@ pipeline {
                 retry(10) {
                   sh '''docker build --tag $IMAGE \
                       --build-arg PYTHON_VERSION=3.6.1 \
+                      --cache-from $IMAGE_CACHE \
                       --file 3.6/stretch/Dockerfile \
                       .
                   '''
@@ -480,6 +487,7 @@ pipeline {
                 retry(10) {
                   sh '''docker build --tag $IMAGE \
                       --build-arg PYTHON_VERSION=3.6.2 \
+                      --cache-from $IMAGE_CACHE \
                       --file 3.6/stretch/Dockerfile \
                       .
                   '''
@@ -540,6 +548,7 @@ pipeline {
                 retry(10) {
                   sh '''docker build --tag $IMAGE \
                       --build-arg PYTHON_VERSION=3.6.3 \
+                      --cache-from $IMAGE_CACHE \
                       --file 3.6/stretch/Dockerfile \
                       .
                   '''
@@ -600,6 +609,7 @@ pipeline {
                 retry(10) {
                   sh '''docker build --tag $IMAGE \
                       --build-arg PYTHON_VERSION=3.6.4 \
+                      --cache-from $IMAGE_CACHE \
                       --file 3.6/stretch/Dockerfile \
                       .
                   '''
@@ -660,6 +670,7 @@ pipeline {
                 retry(10) {
                   sh '''docker build --tag $IMAGE \
                       --build-arg PYTHON_VERSION=3.6.5 \
+                      --cache-from $IMAGE_CACHE \
                       --file 3.6/stretch/Dockerfile \
                       .
                   '''
@@ -720,6 +731,7 @@ pipeline {
                 retry(10) {
                   sh '''docker build --tag $IMAGE \
                       --build-arg PYTHON_VERSION=3.6.6 \
+                      --cache-from $IMAGE_CACHE \
                       --file 3.6/stretch/Dockerfile \
                       .
                   '''
@@ -780,6 +792,7 @@ pipeline {
                 retry(10) {
                   sh '''docker build --tag $IMAGE \
                       --build-arg PYTHON_VERSION=3.6.7 \
+                      --cache-from $IMAGE_CACHE \
                       --file 3.6/stretch/Dockerfile \
                       .
                   '''
@@ -840,6 +853,7 @@ pipeline {
                 retry(10) {
                   sh '''docker build --tag $IMAGE \
                       --build-arg PYTHON_VERSION=3.6.8 \
+                      --cache-from $IMAGE_CACHE \
                       --file 3.6/stretch/Dockerfile \
                       .
                   '''
@@ -903,6 +917,7 @@ pipeline {
                 retry(10) {
                   sh '''docker build --tag $IMAGE \
                       --build-arg PYTHON_VERSION=3.7.0 \
+                      --cache-from $IMAGE_CACHE \
                       --file 3.7/stretch/Dockerfile \
                       .
                   '''
@@ -963,6 +978,7 @@ pipeline {
                 retry(10) {
                   sh '''docker build --tag $IMAGE \
                       --build-arg PYTHON_VERSION=3.7.1 \
+                      --cache-from $IMAGE_CACHE \
                       --file 3.7/stretch/Dockerfile \
                       .
                   '''
@@ -1023,6 +1039,7 @@ pipeline {
                 retry(10) {
                   sh '''docker build --tag $IMAGE \
                       --build-arg PYTHON_VERSION=3.7.2 \
+                      --cache-from $IMAGE_CACHE \
                       --file 3.7/stretch/Dockerfile \
                       .
                   '''
@@ -1083,6 +1100,7 @@ pipeline {
                 retry(10) {
                   sh '''docker build --tag $IMAGE \
                       --build-arg PYTHON_VERSION=3.7.3 \
+                      --cache-from $IMAGE_CACHE \
                       --file 3.7/stretch/Dockerfile \
                       .
                   '''
