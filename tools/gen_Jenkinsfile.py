@@ -84,7 +84,6 @@ stage('%(version)s') {
     environment {
         IMAGE_TAG = "%(version)s-stretch-$BRANCH_NAME-$BUILD_NUMBER"
         IMAGE = "python:$IMAGE_TAG"
-        IMAGE_CACHE = "$IMAGE-cache"
     }
     stages {
         stage('%(version)s Pull Cache') {
@@ -92,7 +91,7 @@ stage('%(version)s') {
                 sh '''docker pull $DOCKER_REGISTRY/python:%(version)s \\
                     && docker tag \\
                         $DOCKER_REGISTRY/python:%(version)s \\
-                        $IMAGE_CACHE \\
+                        $IMAGE-cache \\
                     && docker rmi $DOCKER_REGISTRY/python:%(version)s \\
                     || true
                 '''
@@ -103,7 +102,7 @@ stage('%(version)s') {
                 retry(10) {
                     sh '''docker build --tag $IMAGE \\
                             --build-arg PYTHON_VERSION=%(version)s \\
-                            --cache-from $IMAGE_CACHE \\
+                            --cache-from $IMAGE-cache \\
                             --file %(major_minor)s/stretch/Dockerfile \\
                             .
                     '''
@@ -126,7 +125,7 @@ stage('%(version)s') {
         cleanup {
             sh '''docker rmi \\
                 $IMAGE \\
-                $IMAGE_CACHE \\
+                $IMAGE-cache \\
 %(rmi_tags)s
                 --force
             '''
