@@ -82,7 +82,8 @@ stage('%(version)s') {
         label 'docker_builder_python'
     }
     environment {
-        IMAGE = "python:%(version)s-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+        IMAGE_TAG = "%(version)s-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+        IMAGE = "python:$IMAGE_TAG"
         IMAGE_CACHE = "$IMAGE-cache"
     }
     stages {
@@ -128,9 +129,9 @@ stage('%(version)s') {
 %(rmi_tags)s
                 --force
             '''
-            sh '''test -e official-images/test/clean.sh \\
-                && official-images/test/clean.sh \\
-                || true
+            sh '''docker images 'librarytest/*:python-$IMAGE_TAG-*' \\
+                | awk 'NR>1 { print $1":"$2 }' \\
+                | xargs -r docker rmi
             '''
         }
     }

@@ -30,7 +30,8 @@ pipeline {
             label 'docker_builder_python'
           }
           environment {
-            IMAGE = "python:2.7.16-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE_TAG = "2.7.16-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE = "python:$IMAGE_TAG"
             IMAGE_CACHE = "$IMAGE-cache"
           }
           stages {
@@ -83,9 +84,9 @@ pipeline {
                 $DOCKER_REGISTRY/python:2.7.16 \
                 --force
               '''
-              sh '''test -e official-images/test/clean.sh \
-                && official-images/test/clean.sh \
-                || true
+              sh '''docker images 'librarytest/*:python-$IMAGE_TAG-*' \
+                | awk 'NR>1 { print $1":"$2 }' \
+                | xargs -r docker rmi
               '''
             }
           }
@@ -95,7 +96,8 @@ pipeline {
             label 'docker_builder_python'
           }
           environment {
-            IMAGE = "python:3.5.3-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE_TAG = "3.5.3-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE = "python:$IMAGE_TAG"
             IMAGE_CACHE = "$IMAGE-cache"
           }
           stages {
@@ -142,9 +144,9 @@ pipeline {
                 $DOCKER_REGISTRY/python:3.5.3 \
                 --force
               '''
-              sh '''test -e official-images/test/clean.sh \
-                && official-images/test/clean.sh \
-                || true
+              sh '''docker images 'librarytest/*:python-$IMAGE_TAG-*' \
+                | awk 'NR>1 { print $1":"$2 }' \
+                | xargs -r docker rmi
               '''
             }
           }
@@ -154,7 +156,8 @@ pipeline {
             label 'docker_builder_python'
           }
           environment {
-            IMAGE = "python:3.5.4-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE_TAG = "3.5.4-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE = "python:$IMAGE_TAG"
             IMAGE_CACHE = "$IMAGE-cache"
           }
           stages {
@@ -201,9 +204,9 @@ pipeline {
                 $DOCKER_REGISTRY/python:3.5.4 \
                 --force
               '''
-              sh '''test -e official-images/test/clean.sh \
-                && official-images/test/clean.sh \
-                || true
+              sh '''docker images 'librarytest/*:python-$IMAGE_TAG-*' \
+                | awk 'NR>1 { print $1":"$2 }' \
+                | xargs -r docker rmi
               '''
             }
           }
@@ -213,7 +216,8 @@ pipeline {
             label 'docker_builder_python'
           }
           environment {
-            IMAGE = "python:3.5.5-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE_TAG = "3.5.5-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE = "python:$IMAGE_TAG"
             IMAGE_CACHE = "$IMAGE-cache"
           }
           stages {
@@ -260,9 +264,9 @@ pipeline {
                 $DOCKER_REGISTRY/python:3.5.5 \
                 --force
               '''
-              sh '''test -e official-images/test/clean.sh \
-                && official-images/test/clean.sh \
-                || true
+              sh '''docker images 'librarytest/*:python-$IMAGE_TAG-*' \
+                | awk 'NR>1 { print $1":"$2 }' \
+                | xargs -r docker rmi
               '''
             }
           }
@@ -272,7 +276,8 @@ pipeline {
             label 'docker_builder_python'
           }
           environment {
-            IMAGE = "python:3.5.6-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE_TAG = "3.5.6-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE = "python:$IMAGE_TAG"
             IMAGE_CACHE = "$IMAGE-cache"
           }
           stages {
@@ -322,9 +327,9 @@ pipeline {
                 $DOCKER_REGISTRY/python:3.5.6 \
                 --force
               '''
-              sh '''test -e official-images/test/clean.sh \
-                && official-images/test/clean.sh \
-                || true
+              sh '''docker images 'librarytest/*:python-$IMAGE_TAG-*' \
+                | awk 'NR>1 { print $1":"$2 }' \
+                | xargs -r docker rmi
               '''
             }
           }
@@ -334,7 +339,8 @@ pipeline {
             label 'docker_builder_python'
           }
           environment {
-            IMAGE = "python:3.6.0-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE_TAG = "3.6.0-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE = "python:$IMAGE_TAG"
             IMAGE_CACHE = "$IMAGE-cache"
           }
           stages {
@@ -381,9 +387,9 @@ pipeline {
                 $DOCKER_REGISTRY/python:3.6.0 \
                 --force
               '''
-              sh '''test -e official-images/test/clean.sh \
-                && official-images/test/clean.sh \
-                || true
+              sh '''docker images 'librarytest/*:python-$IMAGE_TAG-*' \
+                | awk 'NR>1 { print $1":"$2 }' \
+                | xargs -r docker rmi
               '''
             }
           }
@@ -393,7 +399,8 @@ pipeline {
             label 'docker_builder_python'
           }
           environment {
-            IMAGE = "python:3.6.1-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE_TAG = "3.6.1-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE = "python:$IMAGE_TAG"
             IMAGE_CACHE = "$IMAGE-cache"
           }
           stages {
@@ -440,9 +447,9 @@ pipeline {
                 $DOCKER_REGISTRY/python:3.6.1 \
                 --force
               '''
-              sh '''test -e official-images/test/clean.sh \
-                && official-images/test/clean.sh \
-                || true
+              sh '''docker images 'librarytest/*:python-$IMAGE_TAG-*' \
+                | awk 'NR>1 { print $1":"$2 }' \
+                | xargs -r docker rmi
               '''
             }
           }
@@ -452,7 +459,8 @@ pipeline {
             label 'docker_builder_python'
           }
           environment {
-            IMAGE = "python:3.6.2-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE_TAG = "3.6.2-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE = "python:$IMAGE_TAG"
             IMAGE_CACHE = "$IMAGE-cache"
           }
           stages {
@@ -499,9 +507,9 @@ pipeline {
                 $DOCKER_REGISTRY/python:3.6.2 \
                 --force
               '''
-              sh '''test -e official-images/test/clean.sh \
-                && official-images/test/clean.sh \
-                || true
+              sh '''docker images 'librarytest/*:python-$IMAGE_TAG-*' \
+                | awk 'NR>1 { print $1":"$2 }' \
+                | xargs -r docker rmi
               '''
             }
           }
@@ -511,7 +519,8 @@ pipeline {
             label 'docker_builder_python'
           }
           environment {
-            IMAGE = "python:3.6.3-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE_TAG = "3.6.3-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE = "python:$IMAGE_TAG"
             IMAGE_CACHE = "$IMAGE-cache"
           }
           stages {
@@ -558,9 +567,9 @@ pipeline {
                 $DOCKER_REGISTRY/python:3.6.3 \
                 --force
               '''
-              sh '''test -e official-images/test/clean.sh \
-                && official-images/test/clean.sh \
-                || true
+              sh '''docker images 'librarytest/*:python-$IMAGE_TAG-*' \
+                | awk 'NR>1 { print $1":"$2 }' \
+                | xargs -r docker rmi
               '''
             }
           }
@@ -570,7 +579,8 @@ pipeline {
             label 'docker_builder_python'
           }
           environment {
-            IMAGE = "python:3.6.4-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE_TAG = "3.6.4-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE = "python:$IMAGE_TAG"
             IMAGE_CACHE = "$IMAGE-cache"
           }
           stages {
@@ -617,9 +627,9 @@ pipeline {
                 $DOCKER_REGISTRY/python:3.6.4 \
                 --force
               '''
-              sh '''test -e official-images/test/clean.sh \
-                && official-images/test/clean.sh \
-                || true
+              sh '''docker images 'librarytest/*:python-$IMAGE_TAG-*' \
+                | awk 'NR>1 { print $1":"$2 }' \
+                | xargs -r docker rmi
               '''
             }
           }
@@ -629,7 +639,8 @@ pipeline {
             label 'docker_builder_python'
           }
           environment {
-            IMAGE = "python:3.6.5-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE_TAG = "3.6.5-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE = "python:$IMAGE_TAG"
             IMAGE_CACHE = "$IMAGE-cache"
           }
           stages {
@@ -676,9 +687,9 @@ pipeline {
                 $DOCKER_REGISTRY/python:3.6.5 \
                 --force
               '''
-              sh '''test -e official-images/test/clean.sh \
-                && official-images/test/clean.sh \
-                || true
+              sh '''docker images 'librarytest/*:python-$IMAGE_TAG-*' \
+                | awk 'NR>1 { print $1":"$2 }' \
+                | xargs -r docker rmi
               '''
             }
           }
@@ -688,7 +699,8 @@ pipeline {
             label 'docker_builder_python'
           }
           environment {
-            IMAGE = "python:3.6.6-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE_TAG = "3.6.6-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE = "python:$IMAGE_TAG"
             IMAGE_CACHE = "$IMAGE-cache"
           }
           stages {
@@ -735,9 +747,9 @@ pipeline {
                 $DOCKER_REGISTRY/python:3.6.6 \
                 --force
               '''
-              sh '''test -e official-images/test/clean.sh \
-                && official-images/test/clean.sh \
-                || true
+              sh '''docker images 'librarytest/*:python-$IMAGE_TAG-*' \
+                | awk 'NR>1 { print $1":"$2 }' \
+                | xargs -r docker rmi
               '''
             }
           }
@@ -747,7 +759,8 @@ pipeline {
             label 'docker_builder_python'
           }
           environment {
-            IMAGE = "python:3.6.7-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE_TAG = "3.6.7-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE = "python:$IMAGE_TAG"
             IMAGE_CACHE = "$IMAGE-cache"
           }
           stages {
@@ -794,9 +807,9 @@ pipeline {
                 $DOCKER_REGISTRY/python:3.6.7 \
                 --force
               '''
-              sh '''test -e official-images/test/clean.sh \
-                && official-images/test/clean.sh \
-                || true
+              sh '''docker images 'librarytest/*:python-$IMAGE_TAG-*' \
+                | awk 'NR>1 { print $1":"$2 }' \
+                | xargs -r docker rmi
               '''
             }
           }
@@ -806,7 +819,8 @@ pipeline {
             label 'docker_builder_python'
           }
           environment {
-            IMAGE = "python:3.6.8-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE_TAG = "3.6.8-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE = "python:$IMAGE_TAG"
             IMAGE_CACHE = "$IMAGE-cache"
           }
           stages {
@@ -856,9 +870,9 @@ pipeline {
                 $DOCKER_REGISTRY/python:3.6.8 \
                 --force
               '''
-              sh '''test -e official-images/test/clean.sh \
-                && official-images/test/clean.sh \
-                || true
+              sh '''docker images 'librarytest/*:python-$IMAGE_TAG-*' \
+                | awk 'NR>1 { print $1":"$2 }' \
+                | xargs -r docker rmi
               '''
             }
           }
@@ -868,7 +882,8 @@ pipeline {
             label 'docker_builder_python'
           }
           environment {
-            IMAGE = "python:3.7.0-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE_TAG = "3.7.0-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE = "python:$IMAGE_TAG"
             IMAGE_CACHE = "$IMAGE-cache"
           }
           stages {
@@ -915,9 +930,9 @@ pipeline {
                 $DOCKER_REGISTRY/python:3.7.0 \
                 --force
               '''
-              sh '''test -e official-images/test/clean.sh \
-                && official-images/test/clean.sh \
-                || true
+              sh '''docker images 'librarytest/*:python-$IMAGE_TAG-*' \
+                | awk 'NR>1 { print $1":"$2 }' \
+                | xargs -r docker rmi
               '''
             }
           }
@@ -927,7 +942,8 @@ pipeline {
             label 'docker_builder_python'
           }
           environment {
-            IMAGE = "python:3.7.1-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE_TAG = "3.7.1-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE = "python:$IMAGE_TAG"
             IMAGE_CACHE = "$IMAGE-cache"
           }
           stages {
@@ -974,9 +990,9 @@ pipeline {
                 $DOCKER_REGISTRY/python:3.7.1 \
                 --force
               '''
-              sh '''test -e official-images/test/clean.sh \
-                && official-images/test/clean.sh \
-                || true
+              sh '''docker images 'librarytest/*:python-$IMAGE_TAG-*' \
+                | awk 'NR>1 { print $1":"$2 }' \
+                | xargs -r docker rmi
               '''
             }
           }
@@ -986,7 +1002,8 @@ pipeline {
             label 'docker_builder_python'
           }
           environment {
-            IMAGE = "python:3.7.2-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE_TAG = "3.7.2-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE = "python:$IMAGE_TAG"
             IMAGE_CACHE = "$IMAGE-cache"
           }
           stages {
@@ -1033,9 +1050,9 @@ pipeline {
                 $DOCKER_REGISTRY/python:3.7.2 \
                 --force
               '''
-              sh '''test -e official-images/test/clean.sh \
-                && official-images/test/clean.sh \
-                || true
+              sh '''docker images 'librarytest/*:python-$IMAGE_TAG-*' \
+                | awk 'NR>1 { print $1":"$2 }' \
+                | xargs -r docker rmi
               '''
             }
           }
@@ -1045,7 +1062,8 @@ pipeline {
             label 'docker_builder_python'
           }
           environment {
-            IMAGE = "python:3.7.3-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE_TAG = "3.7.3-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE = "python:$IMAGE_TAG"
             IMAGE_CACHE = "$IMAGE-cache"
           }
           stages {
@@ -1101,9 +1119,9 @@ pipeline {
                 $DOCKER_REGISTRY/python:latest \
                 --force
               '''
-              sh '''test -e official-images/test/clean.sh \
-                && official-images/test/clean.sh \
-                || true
+              sh '''docker images 'librarytest/*:python-$IMAGE_TAG-*' \
+                | awk 'NR>1 { print $1":"$2 }' \
+                | xargs -r docker rmi
               '''
             }
           }
