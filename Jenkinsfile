@@ -65,23 +65,27 @@ pipeline {
                 retry(3) {
                   sh 'docker push $DOCKER_REGISTRY/python:2'
                 }
-                sh 'docker rmi $DOCKER_REGISTRY/python:2'
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:2.7'
                 retry(3) {
                   sh 'docker push $DOCKER_REGISTRY/python:2.7'
                 }
-                sh 'docker rmi $DOCKER_REGISTRY/python:2.7'
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:2.7.16'
                 retry(3) {
                   sh 'docker push $DOCKER_REGISTRY/python:2.7.16'
                 }
-                sh 'docker rmi $DOCKER_REGISTRY/python:2.7.16'
               }
             }
           }
           post {
             cleanup {
-              sh 'docker rmi --force $IMAGE $IMAGE_CACHE'
+              sh '''docker rmi \
+                $IMAGE \
+                $IMAGE_CACHE \
+                $DOCKER_REGISTRY/python:2 \
+                $DOCKER_REGISTRY/python:2.7 \
+                $DOCKER_REGISTRY/python:2.7.16 \
+                --force
+              '''
               sh '''test -e official-images/test/clean.sh \
                 && official-images/test/clean.sh \
                 || true
@@ -129,13 +133,17 @@ pipeline {
                 retry(3) {
                   sh 'docker push $DOCKER_REGISTRY/python:3.5.3'
                 }
-                sh 'docker rmi $DOCKER_REGISTRY/python:3.5.3'
               }
             }
           }
           post {
             cleanup {
-              sh 'docker rmi --force $IMAGE $IMAGE_CACHE'
+              sh '''docker rmi \
+                $IMAGE \
+                $IMAGE_CACHE \
+                $DOCKER_REGISTRY/python:3.5.3 \
+                --force
+              '''
               sh '''test -e official-images/test/clean.sh \
                 && official-images/test/clean.sh \
                 || true
@@ -183,13 +191,17 @@ pipeline {
                 retry(3) {
                   sh 'docker push $DOCKER_REGISTRY/python:3.5.4'
                 }
-                sh 'docker rmi $DOCKER_REGISTRY/python:3.5.4'
               }
             }
           }
           post {
             cleanup {
-              sh 'docker rmi --force $IMAGE $IMAGE_CACHE'
+              sh '''docker rmi \
+                $IMAGE \
+                $IMAGE_CACHE \
+                $DOCKER_REGISTRY/python:3.5.4 \
+                --force
+              '''
               sh '''test -e official-images/test/clean.sh \
                 && official-images/test/clean.sh \
                 || true
@@ -237,13 +249,17 @@ pipeline {
                 retry(3) {
                   sh 'docker push $DOCKER_REGISTRY/python:3.5.5'
                 }
-                sh 'docker rmi $DOCKER_REGISTRY/python:3.5.5'
               }
             }
           }
           post {
             cleanup {
-              sh 'docker rmi --force $IMAGE $IMAGE_CACHE'
+              sh '''docker rmi \
+                $IMAGE \
+                $IMAGE_CACHE \
+                $DOCKER_REGISTRY/python:3.5.5 \
+                --force
+              '''
               sh '''test -e official-images/test/clean.sh \
                 && official-images/test/clean.sh \
                 || true
@@ -291,18 +307,22 @@ pipeline {
                 retry(3) {
                   sh 'docker push $DOCKER_REGISTRY/python:3.5'
                 }
-                sh 'docker rmi $DOCKER_REGISTRY/python:3.5'
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.5.6'
                 retry(3) {
                   sh 'docker push $DOCKER_REGISTRY/python:3.5.6'
                 }
-                sh 'docker rmi $DOCKER_REGISTRY/python:3.5.6'
               }
             }
           }
           post {
             cleanup {
-              sh 'docker rmi --force $IMAGE $IMAGE_CACHE'
+              sh '''docker rmi \
+                $IMAGE \
+                $IMAGE_CACHE \
+                $DOCKER_REGISTRY/python:3.5 \
+                $DOCKER_REGISTRY/python:3.5.6 \
+                --force
+              '''
               sh '''test -e official-images/test/clean.sh \
                 && official-images/test/clean.sh \
                 || true
@@ -350,13 +370,17 @@ pipeline {
                 retry(3) {
                   sh 'docker push $DOCKER_REGISTRY/python:3.6.0'
                 }
-                sh 'docker rmi $DOCKER_REGISTRY/python:3.6.0'
               }
             }
           }
           post {
             cleanup {
-              sh 'docker rmi --force $IMAGE $IMAGE_CACHE'
+              sh '''docker rmi \
+                $IMAGE \
+                $IMAGE_CACHE \
+                $DOCKER_REGISTRY/python:3.6.0 \
+                --force
+              '''
               sh '''test -e official-images/test/clean.sh \
                 && official-images/test/clean.sh \
                 || true
@@ -404,13 +428,17 @@ pipeline {
                 retry(3) {
                   sh 'docker push $DOCKER_REGISTRY/python:3.6.1'
                 }
-                sh 'docker rmi $DOCKER_REGISTRY/python:3.6.1'
               }
             }
           }
           post {
             cleanup {
-              sh 'docker rmi --force $IMAGE $IMAGE_CACHE'
+              sh '''docker rmi \
+                $IMAGE \
+                $IMAGE_CACHE \
+                $DOCKER_REGISTRY/python:3.6.1 \
+                --force
+              '''
               sh '''test -e official-images/test/clean.sh \
                 && official-images/test/clean.sh \
                 || true
@@ -458,13 +486,17 @@ pipeline {
                 retry(3) {
                   sh 'docker push $DOCKER_REGISTRY/python:3.6.2'
                 }
-                sh 'docker rmi $DOCKER_REGISTRY/python:3.6.2'
               }
             }
           }
           post {
             cleanup {
-              sh 'docker rmi --force $IMAGE $IMAGE_CACHE'
+              sh '''docker rmi \
+                $IMAGE \
+                $IMAGE_CACHE \
+                $DOCKER_REGISTRY/python:3.6.2 \
+                --force
+              '''
               sh '''test -e official-images/test/clean.sh \
                 && official-images/test/clean.sh \
                 || true
@@ -512,13 +544,17 @@ pipeline {
                 retry(3) {
                   sh 'docker push $DOCKER_REGISTRY/python:3.6.3'
                 }
-                sh 'docker rmi $DOCKER_REGISTRY/python:3.6.3'
               }
             }
           }
           post {
             cleanup {
-              sh 'docker rmi --force $IMAGE $IMAGE_CACHE'
+              sh '''docker rmi \
+                $IMAGE \
+                $IMAGE_CACHE \
+                $DOCKER_REGISTRY/python:3.6.3 \
+                --force
+              '''
               sh '''test -e official-images/test/clean.sh \
                 && official-images/test/clean.sh \
                 || true
@@ -566,13 +602,17 @@ pipeline {
                 retry(3) {
                   sh 'docker push $DOCKER_REGISTRY/python:3.6.4'
                 }
-                sh 'docker rmi $DOCKER_REGISTRY/python:3.6.4'
               }
             }
           }
           post {
             cleanup {
-              sh 'docker rmi --force $IMAGE $IMAGE_CACHE'
+              sh '''docker rmi \
+                $IMAGE \
+                $IMAGE_CACHE \
+                $DOCKER_REGISTRY/python:3.6.4 \
+                --force
+              '''
               sh '''test -e official-images/test/clean.sh \
                 && official-images/test/clean.sh \
                 || true
@@ -620,13 +660,17 @@ pipeline {
                 retry(3) {
                   sh 'docker push $DOCKER_REGISTRY/python:3.6.5'
                 }
-                sh 'docker rmi $DOCKER_REGISTRY/python:3.6.5'
               }
             }
           }
           post {
             cleanup {
-              sh 'docker rmi --force $IMAGE $IMAGE_CACHE'
+              sh '''docker rmi \
+                $IMAGE \
+                $IMAGE_CACHE \
+                $DOCKER_REGISTRY/python:3.6.5 \
+                --force
+              '''
               sh '''test -e official-images/test/clean.sh \
                 && official-images/test/clean.sh \
                 || true
@@ -674,13 +718,17 @@ pipeline {
                 retry(3) {
                   sh 'docker push $DOCKER_REGISTRY/python:3.6.6'
                 }
-                sh 'docker rmi $DOCKER_REGISTRY/python:3.6.6'
               }
             }
           }
           post {
             cleanup {
-              sh 'docker rmi --force $IMAGE $IMAGE_CACHE'
+              sh '''docker rmi \
+                $IMAGE \
+                $IMAGE_CACHE \
+                $DOCKER_REGISTRY/python:3.6.6 \
+                --force
+              '''
               sh '''test -e official-images/test/clean.sh \
                 && official-images/test/clean.sh \
                 || true
@@ -728,13 +776,17 @@ pipeline {
                 retry(3) {
                   sh 'docker push $DOCKER_REGISTRY/python:3.6.7'
                 }
-                sh 'docker rmi $DOCKER_REGISTRY/python:3.6.7'
               }
             }
           }
           post {
             cleanup {
-              sh 'docker rmi --force $IMAGE $IMAGE_CACHE'
+              sh '''docker rmi \
+                $IMAGE \
+                $IMAGE_CACHE \
+                $DOCKER_REGISTRY/python:3.6.7 \
+                --force
+              '''
               sh '''test -e official-images/test/clean.sh \
                 && official-images/test/clean.sh \
                 || true
@@ -782,18 +834,22 @@ pipeline {
                 retry(3) {
                   sh 'docker push $DOCKER_REGISTRY/python:3.6'
                 }
-                sh 'docker rmi $DOCKER_REGISTRY/python:3.6'
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.8'
                 retry(3) {
                   sh 'docker push $DOCKER_REGISTRY/python:3.6.8'
                 }
-                sh 'docker rmi $DOCKER_REGISTRY/python:3.6.8'
               }
             }
           }
           post {
             cleanup {
-              sh 'docker rmi --force $IMAGE $IMAGE_CACHE'
+              sh '''docker rmi \
+                $IMAGE \
+                $IMAGE_CACHE \
+                $DOCKER_REGISTRY/python:3.6 \
+                $DOCKER_REGISTRY/python:3.6.8 \
+                --force
+              '''
               sh '''test -e official-images/test/clean.sh \
                 && official-images/test/clean.sh \
                 || true
@@ -841,13 +897,17 @@ pipeline {
                 retry(3) {
                   sh 'docker push $DOCKER_REGISTRY/python:3.7.0'
                 }
-                sh 'docker rmi $DOCKER_REGISTRY/python:3.7.0'
               }
             }
           }
           post {
             cleanup {
-              sh 'docker rmi --force $IMAGE $IMAGE_CACHE'
+              sh '''docker rmi \
+                $IMAGE \
+                $IMAGE_CACHE \
+                $DOCKER_REGISTRY/python:3.7.0 \
+                --force
+              '''
               sh '''test -e official-images/test/clean.sh \
                 && official-images/test/clean.sh \
                 || true
@@ -895,13 +955,17 @@ pipeline {
                 retry(3) {
                   sh 'docker push $DOCKER_REGISTRY/python:3.7.1'
                 }
-                sh 'docker rmi $DOCKER_REGISTRY/python:3.7.1'
               }
             }
           }
           post {
             cleanup {
-              sh 'docker rmi --force $IMAGE $IMAGE_CACHE'
+              sh '''docker rmi \
+                $IMAGE \
+                $IMAGE_CACHE \
+                $DOCKER_REGISTRY/python:3.7.1 \
+                --force
+              '''
               sh '''test -e official-images/test/clean.sh \
                 && official-images/test/clean.sh \
                 || true
@@ -949,13 +1013,17 @@ pipeline {
                 retry(3) {
                   sh 'docker push $DOCKER_REGISTRY/python:3.7.2'
                 }
-                sh 'docker rmi $DOCKER_REGISTRY/python:3.7.2'
               }
             }
           }
           post {
             cleanup {
-              sh 'docker rmi --force $IMAGE $IMAGE_CACHE'
+              sh '''docker rmi \
+                $IMAGE \
+                $IMAGE_CACHE \
+                $DOCKER_REGISTRY/python:3.7.2 \
+                --force
+              '''
               sh '''test -e official-images/test/clean.sh \
                 && official-images/test/clean.sh \
                 || true
@@ -1003,28 +1071,32 @@ pipeline {
                 retry(3) {
                   sh 'docker push $DOCKER_REGISTRY/python:3'
                 }
-                sh 'docker rmi $DOCKER_REGISTRY/python:3'
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.7'
                 retry(3) {
                   sh 'docker push $DOCKER_REGISTRY/python:3.7'
                 }
-                sh 'docker rmi $DOCKER_REGISTRY/python:3.7'
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.7.3'
                 retry(3) {
                   sh 'docker push $DOCKER_REGISTRY/python:3.7.3'
                 }
-                sh 'docker rmi $DOCKER_REGISTRY/python:3.7.3'
                 sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:latest'
                 retry(3) {
                   sh 'docker push $DOCKER_REGISTRY/python:latest'
                 }
-                sh 'docker rmi $DOCKER_REGISTRY/python:latest'
               }
             }
           }
           post {
             cleanup {
-              sh 'docker rmi --force $IMAGE $IMAGE_CACHE'
+              sh '''docker rmi \
+                $IMAGE \
+                $IMAGE_CACHE \
+                $DOCKER_REGISTRY/python:3 \
+                $DOCKER_REGISTRY/python:3.7 \
+                $DOCKER_REGISTRY/python:3.7.3 \
+                $DOCKER_REGISTRY/python:latest \
+                --force
+              '''
               sh '''test -e official-images/test/clean.sh \
                 && official-images/test/clean.sh \
                 || true

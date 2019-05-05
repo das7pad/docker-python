@@ -119,7 +119,12 @@ stage('%(version)s') {
     }
     post {
         cleanup {
-            sh 'docker rmi --force $IMAGE $IMAGE_CACHE'
+            sh '''docker rmi \\
+                $IMAGE \\
+                $IMAGE_CACHE \\
+%(rmi_tags)s
+                --force
+            '''
             sh '''test -e official-images/test/clean.sh \\
                 && official-images/test/clean.sh \\
                 || true
@@ -134,7 +139,10 @@ sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:%(tag)s'
 retry(3) {
     sh 'docker push $DOCKER_REGISTRY/python:%(tag)s'
 }
-sh 'docker rmi $DOCKER_REGISTRY/python:%(tag)s'
+""")
+
+RMI_TAG = indent(8, """
+$DOCKER_REGISTRY/python:%(tag)s \\
 """)
 
 
@@ -158,6 +166,10 @@ def main():
         STAGE % dict(
             version=version,
             major_minor=version.rsplit('.', 1)[0],
+            rmi_tags='\n'.join(
+                RMI_TAG % dict(tag=tag)
+                for tag in sorted(tags_by_version[version])
+            ),
             tags='\n'.join(
                 TAGS % dict(tag=tag)
                 for tag in sorted(tags_by_version[version])
