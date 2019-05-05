@@ -37,7 +37,9 @@ pipeline {
             stage('2.7.16 Pull Cache') {
               steps {
                 sh '''docker pull $DOCKER_REGISTRY/python:2.7.16 \
-                  && docker tag $IMAGE_REPO:2.7.16 $IMAGE_CACHE \
+                  && docker tag \
+                    $DOCKER_REGISTRY/python:2.7.16 \
+                    $IMAGE_CACHE \
                   || true
                 '''
               }
@@ -99,7 +101,9 @@ pipeline {
             stage('3.5.3 Pull Cache') {
               steps {
                 sh '''docker pull $DOCKER_REGISTRY/python:3.5.3 \
-                  && docker tag $IMAGE_REPO:3.5.3 $IMAGE_CACHE \
+                  && docker tag \
+                    $DOCKER_REGISTRY/python:3.5.3 \
+                    $IMAGE_CACHE \
                   || true
                 '''
               }
@@ -155,7 +159,9 @@ pipeline {
             stage('3.5.4 Pull Cache') {
               steps {
                 sh '''docker pull $DOCKER_REGISTRY/python:3.5.4 \
-                  && docker tag $IMAGE_REPO:3.5.4 $IMAGE_CACHE \
+                  && docker tag \
+                    $DOCKER_REGISTRY/python:3.5.4 \
+                    $IMAGE_CACHE \
                   || true
                 '''
               }
@@ -211,7 +217,9 @@ pipeline {
             stage('3.5.5 Pull Cache') {
               steps {
                 sh '''docker pull $DOCKER_REGISTRY/python:3.5.5 \
-                  && docker tag $IMAGE_REPO:3.5.5 $IMAGE_CACHE \
+                  && docker tag \
+                    $DOCKER_REGISTRY/python:3.5.5 \
+                    $IMAGE_CACHE \
                   || true
                 '''
               }
@@ -267,7 +275,9 @@ pipeline {
             stage('3.5.6 Pull Cache') {
               steps {
                 sh '''docker pull $DOCKER_REGISTRY/python:3.5.6 \
-                  && docker tag $IMAGE_REPO:3.5.6 $IMAGE_CACHE \
+                  && docker tag \
+                    $DOCKER_REGISTRY/python:3.5.6 \
+                    $IMAGE_CACHE \
                   || true
                 '''
               }
@@ -326,7 +336,9 @@ pipeline {
             stage('3.6.0 Pull Cache') {
               steps {
                 sh '''docker pull $DOCKER_REGISTRY/python:3.6.0 \
-                  && docker tag $IMAGE_REPO:3.6.0 $IMAGE_CACHE \
+                  && docker tag \
+                    $DOCKER_REGISTRY/python:3.6.0 \
+                    $IMAGE_CACHE \
                   || true
                 '''
               }
@@ -382,7 +394,9 @@ pipeline {
             stage('3.6.1 Pull Cache') {
               steps {
                 sh '''docker pull $DOCKER_REGISTRY/python:3.6.1 \
-                  && docker tag $IMAGE_REPO:3.6.1 $IMAGE_CACHE \
+                  && docker tag \
+                    $DOCKER_REGISTRY/python:3.6.1 \
+                    $IMAGE_CACHE \
                   || true
                 '''
               }
@@ -438,7 +452,9 @@ pipeline {
             stage('3.6.2 Pull Cache') {
               steps {
                 sh '''docker pull $DOCKER_REGISTRY/python:3.6.2 \
-                  && docker tag $IMAGE_REPO:3.6.2 $IMAGE_CACHE \
+                  && docker tag \
+                    $DOCKER_REGISTRY/python:3.6.2 \
+                    $IMAGE_CACHE \
                   || true
                 '''
               }
@@ -494,7 +510,9 @@ pipeline {
             stage('3.6.3 Pull Cache') {
               steps {
                 sh '''docker pull $DOCKER_REGISTRY/python:3.6.3 \
-                  && docker tag $IMAGE_REPO:3.6.3 $IMAGE_CACHE \
+                  && docker tag \
+                    $DOCKER_REGISTRY/python:3.6.3 \
+                    $IMAGE_CACHE \
                   || true
                 '''
               }
@@ -550,7 +568,9 @@ pipeline {
             stage('3.6.4 Pull Cache') {
               steps {
                 sh '''docker pull $DOCKER_REGISTRY/python:3.6.4 \
-                  && docker tag $IMAGE_REPO:3.6.4 $IMAGE_CACHE \
+                  && docker tag \
+                    $DOCKER_REGISTRY/python:3.6.4 \
+                    $IMAGE_CACHE \
                   || true
                 '''
               }
@@ -606,7 +626,9 @@ pipeline {
             stage('3.6.5 Pull Cache') {
               steps {
                 sh '''docker pull $DOCKER_REGISTRY/python:3.6.5 \
-                  && docker tag $IMAGE_REPO:3.6.5 $IMAGE_CACHE \
+                  && docker tag \
+                    $DOCKER_REGISTRY/python:3.6.5 \
+                    $IMAGE_CACHE \
                   || true
                 '''
               }
@@ -662,7 +684,9 @@ pipeline {
             stage('3.6.6 Pull Cache') {
               steps {
                 sh '''docker pull $DOCKER_REGISTRY/python:3.6.6 \
-                  && docker tag $IMAGE_REPO:3.6.6 $IMAGE_CACHE \
+                  && docker tag \
+                    $DOCKER_REGISTRY/python:3.6.6 \
+                    $IMAGE_CACHE \
                   || true
                 '''
               }
@@ -718,7 +742,9 @@ pipeline {
             stage('3.6.7 Pull Cache') {
               steps {
                 sh '''docker pull $DOCKER_REGISTRY/python:3.6.7 \
-                  && docker tag $IMAGE_REPO:3.6.7 $IMAGE_CACHE \
+                  && docker tag \
+                    $DOCKER_REGISTRY/python:3.6.7 \
+                    $IMAGE_CACHE \
                   || true
                 '''
               }
@@ -774,7 +800,9 @@ pipeline {
             stage('3.6.8 Pull Cache') {
               steps {
                 sh '''docker pull $DOCKER_REGISTRY/python:3.6.8 \
-                  && docker tag $IMAGE_REPO:3.6.8 $IMAGE_CACHE \
+                  && docker tag \
+                    $DOCKER_REGISTRY/python:3.6.8 \
+                    $IMAGE_CACHE \
                   || true
                 '''
               }
@@ -833,7 +861,9 @@ pipeline {
             stage('3.7.0 Pull Cache') {
               steps {
                 sh '''docker pull $DOCKER_REGISTRY/python:3.7.0 \
-                  && docker tag $IMAGE_REPO:3.7.0 $IMAGE_CACHE \
+                  && docker tag \
+                    $DOCKER_REGISTRY/python:3.7.0 \
+                    $IMAGE_CACHE \
                   || true
                 '''
               }
@@ -889,7 +919,9 @@ pipeline {
             stage('3.7.1 Pull Cache') {
               steps {
                 sh '''docker pull $DOCKER_REGISTRY/python:3.7.1 \
-                  && docker tag $IMAGE_REPO:3.7.1 $IMAGE_CACHE \
+                  && docker tag \
+                    $DOCKER_REGISTRY/python:3.7.1 \
+                    $IMAGE_CACHE \
                   || true
                 '''
               }
@@ -945,7 +977,9 @@ pipeline {
             stage('3.7.2 Pull Cache') {
               steps {
                 sh '''docker pull $DOCKER_REGISTRY/python:3.7.2 \
-                  && docker tag $IMAGE_REPO:3.7.2 $IMAGE_CACHE \
+                  && docker tag \
+                    $DOCKER_REGISTRY/python:3.7.2 \
+                    $IMAGE_CACHE \
                   || true
                 '''
               }
@@ -1001,7 +1035,9 @@ pipeline {
             stage('3.7.3 Pull Cache') {
               steps {
                 sh '''docker pull $DOCKER_REGISTRY/python:3.7.3 \
-                  && docker tag $IMAGE_REPO:3.7.3 $IMAGE_CACHE \
+                  && docker tag \
+                    $DOCKER_REGISTRY/python:3.7.3 \
+                    $IMAGE_CACHE \
                   || true
                 '''
               }
