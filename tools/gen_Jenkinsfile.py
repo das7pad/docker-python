@@ -129,10 +129,7 @@ stage('%(version)s') {
 %(rmi_tags)s
                 --force
             '''
-            sh '''docker images 'librarytest/*:python-$IMAGE_TAG-*' \\
-                | awk 'NR>1 { print $1":"$2 }' \\
-                | xargs -r docker rmi
-            '''
+            sh 'make clean'
         }
     }
 }

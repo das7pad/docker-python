@@ -84,10 +84,7 @@ pipeline {
                 $DOCKER_REGISTRY/python:2.7.16 \
                 --force
               '''
-              sh '''docker images 'librarytest/*:python-$IMAGE_TAG-*' \
-                | awk 'NR>1 { print $1":"$2 }' \
-                | xargs -r docker rmi
-              '''
+              sh 'make clean'
             }
           }
         }
@@ -144,10 +141,7 @@ pipeline {
                 $DOCKER_REGISTRY/python:3.5.3 \
                 --force
               '''
-              sh '''docker images 'librarytest/*:python-$IMAGE_TAG-*' \
-                | awk 'NR>1 { print $1":"$2 }' \
-                | xargs -r docker rmi
-              '''
+              sh 'make clean'
             }
           }
         }
@@ -204,10 +198,7 @@ pipeline {
                 $DOCKER_REGISTRY/python:3.5.4 \
                 --force
               '''
-              sh '''docker images 'librarytest/*:python-$IMAGE_TAG-*' \
-                | awk 'NR>1 { print $1":"$2 }' \
-                | xargs -r docker rmi
-              '''
+              sh 'make clean'
             }
           }
         }
@@ -264,10 +255,7 @@ pipeline {
                 $DOCKER_REGISTRY/python:3.5.5 \
                 --force
               '''
-              sh '''docker images 'librarytest/*:python-$IMAGE_TAG-*' \
-                | awk 'NR>1 { print $1":"$2 }' \
-                | xargs -r docker rmi
-              '''
+              sh 'make clean'
             }
           }
         }
@@ -327,10 +315,7 @@ pipeline {
                 $DOCKER_REGISTRY/python:3.5.6 \
                 --force
               '''
-              sh '''docker images 'librarytest/*:python-$IMAGE_TAG-*' \
-                | awk 'NR>1 { print $1":"$2 }' \
-                | xargs -r docker rmi
-              '''
+              sh 'make clean'
             }
           }
         }
@@ -387,10 +372,7 @@ pipeline {
                 $DOCKER_REGISTRY/python:3.6.0 \
                 --force
               '''
-              sh '''docker images 'librarytest/*:python-$IMAGE_TAG-*' \
-                | awk 'NR>1 { print $1":"$2 }' \
-                | xargs -r docker rmi
-              '''
+              sh 'make clean'
             }
           }
         }
@@ -447,10 +429,7 @@ pipeline {
                 $DOCKER_REGISTRY/python:3.6.1 \
                 --force
               '''
-              sh '''docker images 'librarytest/*:python-$IMAGE_TAG-*' \
-                | awk 'NR>1 { print $1":"$2 }' \
-                | xargs -r docker rmi
-              '''
+              sh 'make clean'
             }
           }
         }
@@ -507,10 +486,7 @@ pipeline {
                 $DOCKER_REGISTRY/python:3.6.2 \
                 --force
               '''
-              sh '''docker images 'librarytest/*:python-$IMAGE_TAG-*' \
-                | awk 'NR>1 { print $1":"$2 }' \
-                | xargs -r docker rmi
-              '''
+              sh 'make clean'
             }
           }
         }
@@ -567,10 +543,7 @@ pipeline {
                 $DOCKER_REGISTRY/python:3.6.3 \
                 --force
               '''
-              sh '''docker images 'librarytest/*:python-$IMAGE_TAG-*' \
-                | awk 'NR>1 { print $1":"$2 }' \
-                | xargs -r docker rmi
-              '''
+              sh 'make clean'
             }
           }
         }
@@ -627,10 +600,7 @@ pipeline {
                 $DOCKER_REGISTRY/python:3.6.4 \
                 --force
               '''
-              sh '''docker images 'librarytest/*:python-$IMAGE_TAG-*' \
-                | awk 'NR>1 { print $1":"$2 }' \
-                | xargs -r docker rmi
-              '''
+              sh 'make clean'
             }
           }
         }
@@ -687,10 +657,7 @@ pipeline {
                 $DOCKER_REGISTRY/python:3.6.5 \
                 --force
               '''
-              sh '''docker images 'librarytest/*:python-$IMAGE_TAG-*' \
-                | awk 'NR>1 { print $1":"$2 }' \
-                | xargs -r docker rmi
-              '''
+              sh 'make clean'
             }
           }
         }
@@ -747,10 +714,7 @@ pipeline {
                 $DOCKER_REGISTRY/python:3.6.6 \
                 --force
               '''
-              sh '''docker images 'librarytest/*:python-$IMAGE_TAG-*' \
-                | awk 'NR>1 { print $1":"$2 }' \
-                | xargs -r docker rmi
-              '''
+              sh 'make clean'
             }
           }
         }
@@ -807,10 +771,7 @@ pipeline {
                 $DOCKER_REGISTRY/python:3.6.7 \
                 --force
               '''
-              sh '''docker images 'librarytest/*:python-$IMAGE_TAG-*' \
-                | awk 'NR>1 { print $1":"$2 }' \
-                | xargs -r docker rmi
-              '''
+              sh 'make clean'
             }
           }
         }
@@ -870,10 +831,7 @@ pipeline {
                 $DOCKER_REGISTRY/python:3.6.8 \
                 --force
               '''
-              sh '''docker images 'librarytest/*:python-$IMAGE_TAG-*' \
-                | awk 'NR>1 { print $1":"$2 }' \
-                | xargs -r docker rmi
-              '''
+              sh 'make clean'
             }
           }
         }
@@ -930,10 +888,7 @@ pipeline {
                 $DOCKER_REGISTRY/python:3.7.0 \
                 --force
               '''
-              sh '''docker images 'librarytest/*:python-$IMAGE_TAG-*' \
-                | awk 'NR>1 { print $1":"$2 }' \
-                | xargs -r docker rmi
-              '''
+              sh 'make clean'
             }
           }
         }
@@ -990,10 +945,7 @@ pipeline {
                 $DOCKER_REGISTRY/python:3.7.1 \
                 --force
               '''
-              sh '''docker images 'librarytest/*:python-$IMAGE_TAG-*' \
-                | awk 'NR>1 { print $1":"$2 }' \
-                | xargs -r docker rmi
-              '''
+              sh 'make clean'
             }
           }
         }
@@ -1050,10 +1002,7 @@ pipeline {
                 $DOCKER_REGISTRY/python:3.7.2 \
                 --force
               '''
-              sh '''docker images 'librarytest/*:python-$IMAGE_TAG-*' \
-                | awk 'NR>1 { print $1":"$2 }' \
-                | xargs -r docker rmi
-              '''
+              sh 'make clean'
             }
           }
         }
@@ -1119,10 +1068,7 @@ pipeline {
                 $DOCKER_REGISTRY/python:latest \
                 --force
               '''
-              sh '''docker images 'librarytest/*:python-$IMAGE_TAG-*' \
-                | awk 'NR>1 { print $1":"$2 }' \
-                | xargs -r docker rmi
-              '''
+              sh 'make clean'
             }
           }
         }
