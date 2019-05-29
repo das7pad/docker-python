@@ -100,19 +100,15 @@ stage('%(tag)s') {
         IMAGE = "python:$IMAGE_TAG"
     }
     stages {
-        stage('%(tag)s Pull Cache') {
-            steps {
-                sh '''docker pull $DOCKER_REGISTRY/python:%(tag)s \\
-                    && docker tag \\
-                        $DOCKER_REGISTRY/python:%(tag)s \\
-                        $IMAGE-cache \\
-                    && docker rmi $DOCKER_REGISTRY/python:%(tag)s \\
-                    || true
-                '''
-            }
-        }
         stage('%(tag)s Build') {
             steps {
+                sh '''docker pull $DOCKER_REGISTRY/python:%(tag)s \\
+                  && docker tag \\
+                        $DOCKER_REGISTRY/python:%(tag)s \\
+                        $IMAGE-cache \\
+                  && docker rmi $DOCKER_REGISTRY/python:%(tag)s \\
+                  || true
+                '''
                 retry(10) {
                     sh '''docker build --tag $IMAGE \\
                             --build-arg PYTHON_VERSION=%(version)s \\

@@ -34,7 +34,7 @@ pipeline {
             IMAGE = "python:$IMAGE_TAG"
           }
           stages {
-            stage('2.7.16-stretch Pull Cache') {
+            stage('2.7.16-stretch Build') {
               steps {
                 sh '''docker pull $DOCKER_REGISTRY/python:2.7.16-stretch \
                   && docker tag \
@@ -43,10 +43,6 @@ pipeline {
                   && docker rmi $DOCKER_REGISTRY/python:2.7.16-stretch \
                   || true
                 '''
-              }
-            }
-            stage('2.7.16-stretch Build') {
-              steps {
                 retry(10) {
                   sh '''docker build --tag $IMAGE \
                       --build-arg PYTHON_VERSION=2.7.16 \
@@ -108,7 +104,7 @@ pipeline {
             IMAGE = "python:$IMAGE_TAG"
           }
           stages {
-            stage('3.5.3-stretch Pull Cache') {
+            stage('3.5.3-stretch Build') {
               steps {
                 sh '''docker pull $DOCKER_REGISTRY/python:3.5.3-stretch \
                   && docker tag \
@@ -117,10 +113,6 @@ pipeline {
                   && docker rmi $DOCKER_REGISTRY/python:3.5.3-stretch \
                   || true
                 '''
-              }
-            }
-            stage('3.5.3-stretch Build') {
-              steps {
                 retry(10) {
                   sh '''docker build --tag $IMAGE \
                       --build-arg PYTHON_VERSION=3.5.3 \
@@ -170,7 +162,7 @@ pipeline {
             IMAGE = "python:$IMAGE_TAG"
           }
           stages {
-            stage('3.5.4-stretch Pull Cache') {
+            stage('3.5.4-stretch Build') {
               steps {
                 sh '''docker pull $DOCKER_REGISTRY/python:3.5.4-stretch \
                   && docker tag \
@@ -179,10 +171,6 @@ pipeline {
                   && docker rmi $DOCKER_REGISTRY/python:3.5.4-stretch \
                   || true
                 '''
-              }
-            }
-            stage('3.5.4-stretch Build') {
-              steps {
                 retry(10) {
                   sh '''docker build --tag $IMAGE \
                       --build-arg PYTHON_VERSION=3.5.4 \
@@ -232,7 +220,7 @@ pipeline {
             IMAGE = "python:$IMAGE_TAG"
           }
           stages {
-            stage('3.5.5-stretch Pull Cache') {
+            stage('3.5.5-stretch Build') {
               steps {
                 sh '''docker pull $DOCKER_REGISTRY/python:3.5.5-stretch \
                   && docker tag \
@@ -241,10 +229,6 @@ pipeline {
                   && docker rmi $DOCKER_REGISTRY/python:3.5.5-stretch \
                   || true
                 '''
-              }
-            }
-            stage('3.5.5-stretch Build') {
-              steps {
                 retry(10) {
                   sh '''docker build --tag $IMAGE \
                       --build-arg PYTHON_VERSION=3.5.5 \
@@ -294,7 +278,7 @@ pipeline {
             IMAGE = "python:$IMAGE_TAG"
           }
           stages {
-            stage('3.5.6-stretch Pull Cache') {
+            stage('3.5.6-stretch Build') {
               steps {
                 sh '''docker pull $DOCKER_REGISTRY/python:3.5.6-stretch \
                   && docker tag \
@@ -303,10 +287,6 @@ pipeline {
                   && docker rmi $DOCKER_REGISTRY/python:3.5.6-stretch \
                   || true
                 '''
-              }
-            }
-            stage('3.5.6-stretch Build') {
-              steps {
                 retry(10) {
                   sh '''docker build --tag $IMAGE \
                       --build-arg PYTHON_VERSION=3.5.6 \
@@ -362,7 +342,7 @@ pipeline {
             IMAGE = "python:$IMAGE_TAG"
           }
           stages {
-            stage('3.6.0-stretch Pull Cache') {
+            stage('3.6.0-stretch Build') {
               steps {
                 sh '''docker pull $DOCKER_REGISTRY/python:3.6.0-stretch \
                   && docker tag \
@@ -371,10 +351,6 @@ pipeline {
                   && docker rmi $DOCKER_REGISTRY/python:3.6.0-stretch \
                   || true
                 '''
-              }
-            }
-            stage('3.6.0-stretch Build') {
-              steps {
                 retry(10) {
                   sh '''docker build --tag $IMAGE \
                       --build-arg PYTHON_VERSION=3.6.0 \
@@ -424,7 +400,7 @@ pipeline {
             IMAGE = "python:$IMAGE_TAG"
           }
           stages {
-            stage('3.6.1-stretch Pull Cache') {
+            stage('3.6.1-stretch Build') {
               steps {
                 sh '''docker pull $DOCKER_REGISTRY/python:3.6.1-stretch \
                   && docker tag \
@@ -433,10 +409,6 @@ pipeline {
                   && docker rmi $DOCKER_REGISTRY/python:3.6.1-stretch \
                   || true
                 '''
-              }
-            }
-            stage('3.6.1-stretch Build') {
-              steps {
                 retry(10) {
                   sh '''docker build --tag $IMAGE \
                       --build-arg PYTHON_VERSION=3.6.1 \
@@ -486,7 +458,7 @@ pipeline {
             IMAGE = "python:$IMAGE_TAG"
           }
           stages {
-            stage('3.6.2-stretch Pull Cache') {
+            stage('3.6.2-stretch Build') {
               steps {
                 sh '''docker pull $DOCKER_REGISTRY/python:3.6.2-stretch \
                   && docker tag \
@@ -495,10 +467,6 @@ pipeline {
                   && docker rmi $DOCKER_REGISTRY/python:3.6.2-stretch \
                   || true
                 '''
-              }
-            }
-            stage('3.6.2-stretch Build') {
-              steps {
                 retry(10) {
                   sh '''docker build --tag $IMAGE \
                       --build-arg PYTHON_VERSION=3.6.2 \
@@ -548,7 +516,7 @@ pipeline {
             IMAGE = "python:$IMAGE_TAG"
           }
           stages {
-            stage('3.6.3-stretch Pull Cache') {
+            stage('3.6.3-stretch Build') {
               steps {
                 sh '''docker pull $DOCKER_REGISTRY/python:3.6.3-stretch \
                   && docker tag \
@@ -557,10 +525,6 @@ pipeline {
                   && docker rmi $DOCKER_REGISTRY/python:3.6.3-stretch \
                   || true
                 '''
-              }
-            }
-            stage('3.6.3-stretch Build') {
-              steps {
                 retry(10) {
                   sh '''docker build --tag $IMAGE \
                       --build-arg PYTHON_VERSION=3.6.3 \
@@ -610,7 +574,7 @@ pipeline {
             IMAGE = "python:$IMAGE_TAG"
           }
           stages {
-            stage('3.6.4-stretch Pull Cache') {
+            stage('3.6.4-stretch Build') {
               steps {
                 sh '''docker pull $DOCKER_REGISTRY/python:3.6.4-stretch \
                   && docker tag \
@@ -619,10 +583,6 @@ pipeline {
                   && docker rmi $DOCKER_REGISTRY/python:3.6.4-stretch \
                   || true
                 '''
-              }
-            }
-            stage('3.6.4-stretch Build') {
-              steps {
                 retry(10) {
                   sh '''docker build --tag $IMAGE \
                       --build-arg PYTHON_VERSION=3.6.4 \
@@ -672,7 +632,7 @@ pipeline {
             IMAGE = "python:$IMAGE_TAG"
           }
           stages {
-            stage('3.6.5-stretch Pull Cache') {
+            stage('3.6.5-stretch Build') {
               steps {
                 sh '''docker pull $DOCKER_REGISTRY/python:3.6.5-stretch \
                   && docker tag \
@@ -681,10 +641,6 @@ pipeline {
                   && docker rmi $DOCKER_REGISTRY/python:3.6.5-stretch \
                   || true
                 '''
-              }
-            }
-            stage('3.6.5-stretch Build') {
-              steps {
                 retry(10) {
                   sh '''docker build --tag $IMAGE \
                       --build-arg PYTHON_VERSION=3.6.5 \
@@ -734,7 +690,7 @@ pipeline {
             IMAGE = "python:$IMAGE_TAG"
           }
           stages {
-            stage('3.6.6-stretch Pull Cache') {
+            stage('3.6.6-stretch Build') {
               steps {
                 sh '''docker pull $DOCKER_REGISTRY/python:3.6.6-stretch \
                   && docker tag \
@@ -743,10 +699,6 @@ pipeline {
                   && docker rmi $DOCKER_REGISTRY/python:3.6.6-stretch \
                   || true
                 '''
-              }
-            }
-            stage('3.6.6-stretch Build') {
-              steps {
                 retry(10) {
                   sh '''docker build --tag $IMAGE \
                       --build-arg PYTHON_VERSION=3.6.6 \
@@ -796,7 +748,7 @@ pipeline {
             IMAGE = "python:$IMAGE_TAG"
           }
           stages {
-            stage('3.6.7-stretch Pull Cache') {
+            stage('3.6.7-stretch Build') {
               steps {
                 sh '''docker pull $DOCKER_REGISTRY/python:3.6.7-stretch \
                   && docker tag \
@@ -805,10 +757,6 @@ pipeline {
                   && docker rmi $DOCKER_REGISTRY/python:3.6.7-stretch \
                   || true
                 '''
-              }
-            }
-            stage('3.6.7-stretch Build') {
-              steps {
                 retry(10) {
                   sh '''docker build --tag $IMAGE \
                       --build-arg PYTHON_VERSION=3.6.7 \
@@ -858,7 +806,7 @@ pipeline {
             IMAGE = "python:$IMAGE_TAG"
           }
           stages {
-            stage('3.6.8-stretch Pull Cache') {
+            stage('3.6.8-stretch Build') {
               steps {
                 sh '''docker pull $DOCKER_REGISTRY/python:3.6.8-stretch \
                   && docker tag \
@@ -867,10 +815,6 @@ pipeline {
                   && docker rmi $DOCKER_REGISTRY/python:3.6.8-stretch \
                   || true
                 '''
-              }
-            }
-            stage('3.6.8-stretch Build') {
-              steps {
                 retry(10) {
                   sh '''docker build --tag $IMAGE \
                       --build-arg PYTHON_VERSION=3.6.8 \
@@ -926,7 +870,7 @@ pipeline {
             IMAGE = "python:$IMAGE_TAG"
           }
           stages {
-            stage('3.7.0-stretch Pull Cache') {
+            stage('3.7.0-stretch Build') {
               steps {
                 sh '''docker pull $DOCKER_REGISTRY/python:3.7.0-stretch \
                   && docker tag \
@@ -935,10 +879,6 @@ pipeline {
                   && docker rmi $DOCKER_REGISTRY/python:3.7.0-stretch \
                   || true
                 '''
-              }
-            }
-            stage('3.7.0-stretch Build') {
-              steps {
                 retry(10) {
                   sh '''docker build --tag $IMAGE \
                       --build-arg PYTHON_VERSION=3.7.0 \
@@ -988,7 +928,7 @@ pipeline {
             IMAGE = "python:$IMAGE_TAG"
           }
           stages {
-            stage('3.7.1-stretch Pull Cache') {
+            stage('3.7.1-stretch Build') {
               steps {
                 sh '''docker pull $DOCKER_REGISTRY/python:3.7.1-stretch \
                   && docker tag \
@@ -997,10 +937,6 @@ pipeline {
                   && docker rmi $DOCKER_REGISTRY/python:3.7.1-stretch \
                   || true
                 '''
-              }
-            }
-            stage('3.7.1-stretch Build') {
-              steps {
                 retry(10) {
                   sh '''docker build --tag $IMAGE \
                       --build-arg PYTHON_VERSION=3.7.1 \
@@ -1050,7 +986,7 @@ pipeline {
             IMAGE = "python:$IMAGE_TAG"
           }
           stages {
-            stage('3.7.2-stretch Pull Cache') {
+            stage('3.7.2-stretch Build') {
               steps {
                 sh '''docker pull $DOCKER_REGISTRY/python:3.7.2-stretch \
                   && docker tag \
@@ -1059,10 +995,6 @@ pipeline {
                   && docker rmi $DOCKER_REGISTRY/python:3.7.2-stretch \
                   || true
                 '''
-              }
-            }
-            stage('3.7.2-stretch Build') {
-              steps {
                 retry(10) {
                   sh '''docker build --tag $IMAGE \
                       --build-arg PYTHON_VERSION=3.7.2 \
@@ -1112,7 +1044,7 @@ pipeline {
             IMAGE = "python:$IMAGE_TAG"
           }
           stages {
-            stage('3.7.3-stretch Pull Cache') {
+            stage('3.7.3-stretch Build') {
               steps {
                 sh '''docker pull $DOCKER_REGISTRY/python:3.7.3-stretch \
                   && docker tag \
@@ -1121,10 +1053,6 @@ pipeline {
                   && docker rmi $DOCKER_REGISTRY/python:3.7.3-stretch \
                   || true
                 '''
-              }
-            }
-            stage('3.7.3-stretch Build') {
-              steps {
                 retry(10) {
                   sh '''docker build --tag $IMAGE \
                       --build-arg PYTHON_VERSION=3.7.3 \
@@ -1192,7 +1120,7 @@ pipeline {
             IMAGE = "python:$IMAGE_TAG"
           }
           stages {
-            stage('2.7.16-stretch-slim Pull Cache') {
+            stage('2.7.16-stretch-slim Build') {
               steps {
                 sh '''docker pull $DOCKER_REGISTRY/python:2.7.16-stretch-slim \
                   && docker tag \
@@ -1201,10 +1129,6 @@ pipeline {
                   && docker rmi $DOCKER_REGISTRY/python:2.7.16-stretch-slim \
                   || true
                 '''
-              }
-            }
-            stage('2.7.16-stretch-slim Build') {
-              steps {
                 retry(10) {
                   sh '''docker build --tag $IMAGE \
                       --build-arg PYTHON_VERSION=2.7.16 \
@@ -1266,7 +1190,7 @@ pipeline {
             IMAGE = "python:$IMAGE_TAG"
           }
           stages {
-            stage('3.5.6-stretch-slim Pull Cache') {
+            stage('3.5.6-stretch-slim Build') {
               steps {
                 sh '''docker pull $DOCKER_REGISTRY/python:3.5.6-stretch-slim \
                   && docker tag \
@@ -1275,10 +1199,6 @@ pipeline {
                   && docker rmi $DOCKER_REGISTRY/python:3.5.6-stretch-slim \
                   || true
                 '''
-              }
-            }
-            stage('3.5.6-stretch-slim Build') {
-              steps {
                 retry(10) {
                   sh '''docker build --tag $IMAGE \
                       --build-arg PYTHON_VERSION=3.5.6 \
@@ -1334,7 +1254,7 @@ pipeline {
             IMAGE = "python:$IMAGE_TAG"
           }
           stages {
-            stage('3.6.8-stretch-slim Pull Cache') {
+            stage('3.6.8-stretch-slim Build') {
               steps {
                 sh '''docker pull $DOCKER_REGISTRY/python:3.6.8-stretch-slim \
                   && docker tag \
@@ -1343,10 +1263,6 @@ pipeline {
                   && docker rmi $DOCKER_REGISTRY/python:3.6.8-stretch-slim \
                   || true
                 '''
-              }
-            }
-            stage('3.6.8-stretch-slim Build') {
-              steps {
                 retry(10) {
                   sh '''docker build --tag $IMAGE \
                       --build-arg PYTHON_VERSION=3.6.8 \
@@ -1402,7 +1318,7 @@ pipeline {
             IMAGE = "python:$IMAGE_TAG"
           }
           stages {
-            stage('3.7.3-stretch-slim Pull Cache') {
+            stage('3.7.3-stretch-slim Build') {
               steps {
                 sh '''docker pull $DOCKER_REGISTRY/python:3.7.3-stretch-slim \
                   && docker tag \
@@ -1411,10 +1327,6 @@ pipeline {
                   && docker rmi $DOCKER_REGISTRY/python:3.7.3-stretch-slim \
                   || true
                 '''
-              }
-            }
-            stage('3.7.3-stretch-slim Build') {
-              steps {
                 retry(10) {
                   sh '''docker build --tag $IMAGE \
                       --build-arg PYTHON_VERSION=3.7.3 \
