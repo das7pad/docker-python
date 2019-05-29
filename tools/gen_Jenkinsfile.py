@@ -33,7 +33,7 @@ VERSIONS_BY_VARIANT = {
         '3.7.3',
     ],
 
-    'stretch-slim': [
+    'slim-stretch': [
         '2.7.16',
 
         '3.5.6',
@@ -202,7 +202,7 @@ def main():
                 STAGE % dict(
                     version=version,
                     major_minor=version.rsplit('.', 1)[0],
-                    path=variant.replace('-', '/'),
+                    path='/'.join(reversed(variant.split('-'))),
                     tag='%s-%s' % (version, variant),
                     rmi_tags='\n'.join(
                         RMI_TAG % dict(tag=tag)
