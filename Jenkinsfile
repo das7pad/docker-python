@@ -1183,6 +1183,296 @@ pipeline {
             }
           }
         }
+        stage('2.7.16-stretch-slim') {
+          agent {
+            label 'docker_builder_python'
+          }
+          environment {
+            IMAGE_TAG = "2.7.16-stretch-slim-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE = "python:$IMAGE_TAG"
+          }
+          stages {
+            stage('2.7.16-stretch-slim Pull Cache') {
+              steps {
+                sh '''docker pull $DOCKER_REGISTRY/python:2.7.16-stretch-slim \
+                  && docker tag \
+                    $DOCKER_REGISTRY/python:2.7.16-stretch-slim \
+                    $IMAGE-cache \
+                  && docker rmi $DOCKER_REGISTRY/python:2.7.16-stretch-slim \
+                  || true
+                '''
+              }
+            }
+            stage('2.7.16-stretch-slim Build') {
+              steps {
+                retry(10) {
+                  sh '''docker build --tag $IMAGE \
+                      --build-arg PYTHON_VERSION=2.7.16 \
+                      --cache-from $IMAGE-cache \
+                      --file 2.7/stretch/slim/Dockerfile \
+                      .
+                  '''
+                }
+              }
+            }
+            stage('2.7.16-stretch-slim Test') {
+              steps {
+                unstash 'official-images'
+                sh 'official-images/test/run.sh $IMAGE'
+              }
+            }
+            stage('2.7.16-stretch-slim Push') {
+              steps {
+                sh '''
+                     docker tag $IMAGE $DOCKER_REGISTRY/python:2-slim \
+                  && docker push $DOCKER_REGISTRY/python:2-slim \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:2-stretch-slim \
+                  && docker push $DOCKER_REGISTRY/python:2-stretch-slim \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:2.7-slim \
+                  && docker push $DOCKER_REGISTRY/python:2.7-slim \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:2.7-stretch-slim \
+                  && docker push $DOCKER_REGISTRY/python:2.7-stretch-slim \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:2.7.16-slim \
+                  && docker push $DOCKER_REGISTRY/python:2.7.16-slim \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:2.7.16-stretch-slim \
+                  && docker push $DOCKER_REGISTRY/python:2.7.16-stretch-slim
+                '''
+              }
+            }
+          }
+          post {
+            cleanup {
+              sh '''docker rmi \
+                $IMAGE \
+                $IMAGE-cache \
+                $DOCKER_REGISTRY/python:2-slim \
+                $DOCKER_REGISTRY/python:2-stretch-slim \
+                $DOCKER_REGISTRY/python:2.7-slim \
+                $DOCKER_REGISTRY/python:2.7-stretch-slim \
+                $DOCKER_REGISTRY/python:2.7.16-slim \
+                $DOCKER_REGISTRY/python:2.7.16-stretch-slim \
+                --force
+              '''
+              sh 'make clean'
+            }
+          }
+        }
+        stage('3.5.6-stretch-slim') {
+          agent {
+            label 'docker_builder_python'
+          }
+          environment {
+            IMAGE_TAG = "3.5.6-stretch-slim-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE = "python:$IMAGE_TAG"
+          }
+          stages {
+            stage('3.5.6-stretch-slim Pull Cache') {
+              steps {
+                sh '''docker pull $DOCKER_REGISTRY/python:3.5.6-stretch-slim \
+                  && docker tag \
+                    $DOCKER_REGISTRY/python:3.5.6-stretch-slim \
+                    $IMAGE-cache \
+                  && docker rmi $DOCKER_REGISTRY/python:3.5.6-stretch-slim \
+                  || true
+                '''
+              }
+            }
+            stage('3.5.6-stretch-slim Build') {
+              steps {
+                retry(10) {
+                  sh '''docker build --tag $IMAGE \
+                      --build-arg PYTHON_VERSION=3.5.6 \
+                      --cache-from $IMAGE-cache \
+                      --file 3.5/stretch/slim/Dockerfile \
+                      .
+                  '''
+                }
+              }
+            }
+            stage('3.5.6-stretch-slim Test') {
+              steps {
+                unstash 'official-images'
+                sh 'official-images/test/run.sh $IMAGE'
+              }
+            }
+            stage('3.5.6-stretch-slim Push') {
+              steps {
+                sh '''
+                     docker tag $IMAGE $DOCKER_REGISTRY/python:3.5-slim \
+                  && docker push $DOCKER_REGISTRY/python:3.5-slim \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:3.5-stretch-slim \
+                  && docker push $DOCKER_REGISTRY/python:3.5-stretch-slim \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:3.5.6-slim \
+                  && docker push $DOCKER_REGISTRY/python:3.5.6-slim \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:3.5.6-stretch-slim \
+                  && docker push $DOCKER_REGISTRY/python:3.5.6-stretch-slim
+                '''
+              }
+            }
+          }
+          post {
+            cleanup {
+              sh '''docker rmi \
+                $IMAGE \
+                $IMAGE-cache \
+                $DOCKER_REGISTRY/python:3.5-slim \
+                $DOCKER_REGISTRY/python:3.5-stretch-slim \
+                $DOCKER_REGISTRY/python:3.5.6-slim \
+                $DOCKER_REGISTRY/python:3.5.6-stretch-slim \
+                --force
+              '''
+              sh 'make clean'
+            }
+          }
+        }
+        stage('3.6.8-stretch-slim') {
+          agent {
+            label 'docker_builder_python'
+          }
+          environment {
+            IMAGE_TAG = "3.6.8-stretch-slim-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE = "python:$IMAGE_TAG"
+          }
+          stages {
+            stage('3.6.8-stretch-slim Pull Cache') {
+              steps {
+                sh '''docker pull $DOCKER_REGISTRY/python:3.6.8-stretch-slim \
+                  && docker tag \
+                    $DOCKER_REGISTRY/python:3.6.8-stretch-slim \
+                    $IMAGE-cache \
+                  && docker rmi $DOCKER_REGISTRY/python:3.6.8-stretch-slim \
+                  || true
+                '''
+              }
+            }
+            stage('3.6.8-stretch-slim Build') {
+              steps {
+                retry(10) {
+                  sh '''docker build --tag $IMAGE \
+                      --build-arg PYTHON_VERSION=3.6.8 \
+                      --cache-from $IMAGE-cache \
+                      --file 3.6/stretch/slim/Dockerfile \
+                      .
+                  '''
+                }
+              }
+            }
+            stage('3.6.8-stretch-slim Test') {
+              steps {
+                unstash 'official-images'
+                sh 'official-images/test/run.sh $IMAGE'
+              }
+            }
+            stage('3.6.8-stretch-slim Push') {
+              steps {
+                sh '''
+                     docker tag $IMAGE $DOCKER_REGISTRY/python:3.6-slim \
+                  && docker push $DOCKER_REGISTRY/python:3.6-slim \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:3.6-stretch-slim \
+                  && docker push $DOCKER_REGISTRY/python:3.6-stretch-slim \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.8-slim \
+                  && docker push $DOCKER_REGISTRY/python:3.6.8-slim \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.8-stretch-slim \
+                  && docker push $DOCKER_REGISTRY/python:3.6.8-stretch-slim
+                '''
+              }
+            }
+          }
+          post {
+            cleanup {
+              sh '''docker rmi \
+                $IMAGE \
+                $IMAGE-cache \
+                $DOCKER_REGISTRY/python:3.6-slim \
+                $DOCKER_REGISTRY/python:3.6-stretch-slim \
+                $DOCKER_REGISTRY/python:3.6.8-slim \
+                $DOCKER_REGISTRY/python:3.6.8-stretch-slim \
+                --force
+              '''
+              sh 'make clean'
+            }
+          }
+        }
+        stage('3.7.3-stretch-slim') {
+          agent {
+            label 'docker_builder_python'
+          }
+          environment {
+            IMAGE_TAG = "3.7.3-stretch-slim-$BRANCH_NAME-$BUILD_NUMBER"
+            IMAGE = "python:$IMAGE_TAG"
+          }
+          stages {
+            stage('3.7.3-stretch-slim Pull Cache') {
+              steps {
+                sh '''docker pull $DOCKER_REGISTRY/python:3.7.3-stretch-slim \
+                  && docker tag \
+                    $DOCKER_REGISTRY/python:3.7.3-stretch-slim \
+                    $IMAGE-cache \
+                  && docker rmi $DOCKER_REGISTRY/python:3.7.3-stretch-slim \
+                  || true
+                '''
+              }
+            }
+            stage('3.7.3-stretch-slim Build') {
+              steps {
+                retry(10) {
+                  sh '''docker build --tag $IMAGE \
+                      --build-arg PYTHON_VERSION=3.7.3 \
+                      --cache-from $IMAGE-cache \
+                      --file 3.7/stretch/slim/Dockerfile \
+                      .
+                  '''
+                }
+              }
+            }
+            stage('3.7.3-stretch-slim Test') {
+              steps {
+                unstash 'official-images'
+                sh 'official-images/test/run.sh $IMAGE'
+              }
+            }
+            stage('3.7.3-stretch-slim Push') {
+              steps {
+                sh '''
+                     docker tag $IMAGE $DOCKER_REGISTRY/python:3-slim \
+                  && docker push $DOCKER_REGISTRY/python:3-slim \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:3-stretch-slim \
+                  && docker push $DOCKER_REGISTRY/python:3-stretch-slim \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:3.7-slim \
+                  && docker push $DOCKER_REGISTRY/python:3.7-slim \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:3.7-stretch-slim \
+                  && docker push $DOCKER_REGISTRY/python:3.7-stretch-slim \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:3.7.3-slim \
+                  && docker push $DOCKER_REGISTRY/python:3.7.3-slim \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:3.7.3-stretch-slim \
+                  && docker push $DOCKER_REGISTRY/python:3.7.3-stretch-slim \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:slim \
+                  && docker push $DOCKER_REGISTRY/python:slim \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:stretch-slim \
+                  && docker push $DOCKER_REGISTRY/python:stretch-slim
+                '''
+              }
+            }
+          }
+          post {
+            cleanup {
+              sh '''docker rmi \
+                $IMAGE \
+                $IMAGE-cache \
+                $DOCKER_REGISTRY/python:3-slim \
+                $DOCKER_REGISTRY/python:3-stretch-slim \
+                $DOCKER_REGISTRY/python:3.7-slim \
+                $DOCKER_REGISTRY/python:3.7-stretch-slim \
+                $DOCKER_REGISTRY/python:3.7.3-slim \
+                $DOCKER_REGISTRY/python:3.7.3-stretch-slim \
+                $DOCKER_REGISTRY/python:slim \
+                $DOCKER_REGISTRY/python:stretch-slim \
+                --force
+              '''
+              sh 'make clean'
+            }
+          }
+        }
       }
     }
   }
