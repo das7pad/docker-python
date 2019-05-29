@@ -6,29 +6,33 @@ import collections
 import pathlib
 
 
-VERSIONS = [
-    '2.7.16',
+DEFAULT_VARIANT = 'stretch'
 
-    '3.5.3',
-    '3.5.4',
-    '3.5.5',
-    '3.5.6',
+VERSIONS_BY_VARIANT = {
+    'stretch': [
+        '2.7.16',
 
-    '3.6.0',
-    '3.6.1',
-    '3.6.2',
-    '3.6.3',
-    '3.6.4',
-    '3.6.5',
-    '3.6.6',
-    '3.6.7',
-    '3.6.8',
+        '3.5.3',
+        '3.5.4',
+        '3.5.5',
+        '3.5.6',
 
-    '3.7.0',
-    '3.7.1',
-    '3.7.2',
-    '3.7.3',
-]
+        '3.6.0',
+        '3.6.1',
+        '3.6.2',
+        '3.6.3',
+        '3.6.4',
+        '3.6.5',
+        '3.6.6',
+        '3.6.7',
+        '3.6.8',
+
+        '3.7.0',
+        '3.7.1',
+        '3.7.2',
+        '3.7.3',
+    ],
+}
 
 
 def indent(size: int, content: str):
@@ -77,45 +81,45 @@ pipeline {
 
 
 STAGE = indent(4, """
-stage('%(version)s') {
+stage('%(tag)s') {
     agent {
         label 'docker_builder_python'
     }
     environment {
-        IMAGE_TAG = "%(version)s-stretch-$BRANCH_NAME-$BUILD_NUMBER"
+        IMAGE_TAG = "%(tag)s-$BRANCH_NAME-$BUILD_NUMBER"
         IMAGE = "python:$IMAGE_TAG"
     }
     stages {
-        stage('%(version)s Pull Cache') {
+        stage('%(tag)s Pull Cache') {
             steps {
-                sh '''docker pull $DOCKER_REGISTRY/python:%(version)s \\
+                sh '''docker pull $DOCKER_REGISTRY/python:%(tag)s \\
                     && docker tag \\
-                        $DOCKER_REGISTRY/python:%(version)s \\
+                        $DOCKER_REGISTRY/python:%(tag)s \\
                         $IMAGE-cache \\
-                    && docker rmi $DOCKER_REGISTRY/python:%(version)s \\
+                    && docker rmi $DOCKER_REGISTRY/python:%(tag)s \\
                     || true
                 '''
             }
         }
-        stage('%(version)s Build') {
+        stage('%(tag)s Build') {
             steps {
                 retry(10) {
                     sh '''docker build --tag $IMAGE \\
                             --build-arg PYTHON_VERSION=%(version)s \\
                             --cache-from $IMAGE-cache \\
-                            --file %(major_minor)s/stretch/Dockerfile \\
+                            --file %(major_minor)s/%(path)s/Dockerfile \\
                             .
                     '''
                 }
             }
         }
-        stage('%(version)s Test') {
+        stage('%(tag)s Test') {
             steps {
                 unstash 'official-images'
                 sh 'official-images/test/run.sh $IMAGE'
             }
         }
-        stage('%(version)s Push') {
+        stage('%(tag)s Push') {
             steps {
 %(tags)s
             }
@@ -148,36 +152,62 @@ $DOCKER_REGISTRY/python:%(tag)s \\
 def main():
     jenkinsfile = pathlib.Path(__file__).parent.parent / 'Jenkinsfile'
 
-    tags = {}
-    for version in VERSIONS:
-        major_minor, patch = version.rsplit('.', 1)
-        major, minor = major_minor.split('.')
-        tags[version] = version
-        tags[major_minor] = version
-        tags[major] = version
-        tags['latest'] = version
+    stages = []
+    for variant, VERSIONS in VERSIONS_BY_VARIANT.items():
+        tags = {}
+        for version in VERSIONS:
+            major_minor, patch = version.rsplit('.', 1)
+            major, minor = major_minor.split('.')
+            tags[version] = version
+            tags[major_minor] = version
+            tags[major] = version
+            tags['latest'] = version
 
-    tags_by_version = collections.defaultdict(list)
-    for tag, version in tags.items():
-        tags_by_version[version].append(tag)
+        tags_by_version = collections.defaultdict(list)
+        for tag, version in tags.items():
+            tags_by_version[version].append(tag)
 
-    stages = '\n'.join(
-        STAGE % dict(
-            version=version,
-            major_minor=version.rsplit('.', 1)[0],
-            rmi_tags='\n'.join(
-                RMI_TAG % dict(tag=tag)
-                for tag in sorted(tags_by_version[version])
-            ),
-            tags='\n'.join(
-                TAGS % dict(tag=tag)
-                for tag in sorted(tags_by_version[version])
+        for version, tags_shared in sorted(tags_by_version.items()):
+            tags = set()
+            is_latest = 'latest' in tags_shared
+            if is_latest:
+                tags.add(variant)
+
+                # latest-stretch is not a simple tag
+                tags_shared.remove('latest')
+
+            if DEFAULT_VARIANT in variant:
+                stripped = variant.replace(DEFAULT_VARIANT, '').strip('-')
+
+                if is_latest:
+                    tags.add(stripped or 'latest')
+
+                if stripped:
+                    tags.update('%s-%s' % (tag, stripped) for tag in tags_shared)
+                else:
+                    tags.update(tags_shared)
+
+            tags.update('%s-%s' % (tag, variant) for tag in tags_shared)
+
+            tags = sorted(tags)
+            stages.append(
+                STAGE % dict(
+                    version=version,
+                    major_minor=version.rsplit('.', 1)[0],
+                    path=variant.replace('-', '/'),
+                    tag='%s-%s' % (version, variant),
+                    rmi_tags='\n'.join(
+                        RMI_TAG % dict(tag=tag)
+                        for tag in tags
+                    ),
+                    tags='\n'.join(
+                        TAGS % dict(tag=tag)
+                        for tag in tags
+                    ),
+                )
             )
-        )
-        for version in VERSIONS
-    )
 
-    pipeline = PIPELINE % dict(stages=stages)
+    pipeline = PIPELINE % dict(stages='\n'.join(stages))
     jenkinsfile.write_text(pipeline + '\n')
 
 
