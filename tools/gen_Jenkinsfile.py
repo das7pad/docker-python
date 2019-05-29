@@ -121,7 +121,9 @@ stage('%(tag)s') {
         }
         stage('%(tag)s Push') {
             steps {
+                sh '''
 %(tags)s
+                '''
             }
         }
     }
@@ -139,9 +141,9 @@ stage('%(tag)s') {
 }
 """)
 
-TAGS = indent(8, """
-sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:%(tag)s'
-sh 'docker push $DOCKER_REGISTRY/python:%(tag)s'
+TAGS = indent(9, """
+&& docker tag $IMAGE $DOCKER_REGISTRY/python:%(tag)s \\
+&& docker push $DOCKER_REGISTRY/python:%(tag)s \\
 """)
 
 RMI_TAG = indent(8, """
@@ -203,7 +205,7 @@ def main():
                     tags='\n'.join(
                         TAGS % dict(tag=tag)
                         for tag in tags
-                    ),
+                    ).replace('&& ', '   ', 1).rstrip(' \\'),
                 )
             )
 

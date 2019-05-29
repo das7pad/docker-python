@@ -65,18 +65,20 @@ pipeline {
             }
             stage('2.7.16-stretch Push') {
               steps {
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:2'
-                sh 'docker push $DOCKER_REGISTRY/python:2'
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:2-stretch'
-                sh 'docker push $DOCKER_REGISTRY/python:2-stretch'
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:2.7'
-                sh 'docker push $DOCKER_REGISTRY/python:2.7'
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:2.7-stretch'
-                sh 'docker push $DOCKER_REGISTRY/python:2.7-stretch'
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:2.7.16'
-                sh 'docker push $DOCKER_REGISTRY/python:2.7.16'
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:2.7.16-stretch'
-                sh 'docker push $DOCKER_REGISTRY/python:2.7.16-stretch'
+                sh '''
+                     docker tag $IMAGE $DOCKER_REGISTRY/python:2 \
+                  && docker push $DOCKER_REGISTRY/python:2 \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:2-stretch \
+                  && docker push $DOCKER_REGISTRY/python:2-stretch \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:2.7 \
+                  && docker push $DOCKER_REGISTRY/python:2.7 \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:2.7-stretch \
+                  && docker push $DOCKER_REGISTRY/python:2.7-stretch \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:2.7.16 \
+                  && docker push $DOCKER_REGISTRY/python:2.7.16 \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:2.7.16-stretch \
+                  && docker push $DOCKER_REGISTRY/python:2.7.16-stretch
+                '''
               }
             }
           }
@@ -137,10 +139,12 @@ pipeline {
             }
             stage('3.5.3-stretch Push') {
               steps {
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.5.3'
-                sh 'docker push $DOCKER_REGISTRY/python:3.5.3'
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.5.3-stretch'
-                sh 'docker push $DOCKER_REGISTRY/python:3.5.3-stretch'
+                sh '''
+                     docker tag $IMAGE $DOCKER_REGISTRY/python:3.5.3 \
+                  && docker push $DOCKER_REGISTRY/python:3.5.3 \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:3.5.3-stretch \
+                  && docker push $DOCKER_REGISTRY/python:3.5.3-stretch
+                '''
               }
             }
           }
@@ -197,10 +201,12 @@ pipeline {
             }
             stage('3.5.4-stretch Push') {
               steps {
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.5.4'
-                sh 'docker push $DOCKER_REGISTRY/python:3.5.4'
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.5.4-stretch'
-                sh 'docker push $DOCKER_REGISTRY/python:3.5.4-stretch'
+                sh '''
+                     docker tag $IMAGE $DOCKER_REGISTRY/python:3.5.4 \
+                  && docker push $DOCKER_REGISTRY/python:3.5.4 \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:3.5.4-stretch \
+                  && docker push $DOCKER_REGISTRY/python:3.5.4-stretch
+                '''
               }
             }
           }
@@ -257,10 +263,12 @@ pipeline {
             }
             stage('3.5.5-stretch Push') {
               steps {
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.5.5'
-                sh 'docker push $DOCKER_REGISTRY/python:3.5.5'
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.5.5-stretch'
-                sh 'docker push $DOCKER_REGISTRY/python:3.5.5-stretch'
+                sh '''
+                     docker tag $IMAGE $DOCKER_REGISTRY/python:3.5.5 \
+                  && docker push $DOCKER_REGISTRY/python:3.5.5 \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:3.5.5-stretch \
+                  && docker push $DOCKER_REGISTRY/python:3.5.5-stretch
+                '''
               }
             }
           }
@@ -317,14 +325,16 @@ pipeline {
             }
             stage('3.5.6-stretch Push') {
               steps {
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.5'
-                sh 'docker push $DOCKER_REGISTRY/python:3.5'
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.5-stretch'
-                sh 'docker push $DOCKER_REGISTRY/python:3.5-stretch'
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.5.6'
-                sh 'docker push $DOCKER_REGISTRY/python:3.5.6'
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.5.6-stretch'
-                sh 'docker push $DOCKER_REGISTRY/python:3.5.6-stretch'
+                sh '''
+                     docker tag $IMAGE $DOCKER_REGISTRY/python:3.5 \
+                  && docker push $DOCKER_REGISTRY/python:3.5 \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:3.5-stretch \
+                  && docker push $DOCKER_REGISTRY/python:3.5-stretch \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:3.5.6 \
+                  && docker push $DOCKER_REGISTRY/python:3.5.6 \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:3.5.6-stretch \
+                  && docker push $DOCKER_REGISTRY/python:3.5.6-stretch
+                '''
               }
             }
           }
@@ -383,10 +393,12 @@ pipeline {
             }
             stage('3.6.0-stretch Push') {
               steps {
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.0'
-                sh 'docker push $DOCKER_REGISTRY/python:3.6.0'
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.0-stretch'
-                sh 'docker push $DOCKER_REGISTRY/python:3.6.0-stretch'
+                sh '''
+                     docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.0 \
+                  && docker push $DOCKER_REGISTRY/python:3.6.0 \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.0-stretch \
+                  && docker push $DOCKER_REGISTRY/python:3.6.0-stretch
+                '''
               }
             }
           }
@@ -443,10 +455,12 @@ pipeline {
             }
             stage('3.6.1-stretch Push') {
               steps {
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.1'
-                sh 'docker push $DOCKER_REGISTRY/python:3.6.1'
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.1-stretch'
-                sh 'docker push $DOCKER_REGISTRY/python:3.6.1-stretch'
+                sh '''
+                     docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.1 \
+                  && docker push $DOCKER_REGISTRY/python:3.6.1 \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.1-stretch \
+                  && docker push $DOCKER_REGISTRY/python:3.6.1-stretch
+                '''
               }
             }
           }
@@ -503,10 +517,12 @@ pipeline {
             }
             stage('3.6.2-stretch Push') {
               steps {
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.2'
-                sh 'docker push $DOCKER_REGISTRY/python:3.6.2'
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.2-stretch'
-                sh 'docker push $DOCKER_REGISTRY/python:3.6.2-stretch'
+                sh '''
+                     docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.2 \
+                  && docker push $DOCKER_REGISTRY/python:3.6.2 \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.2-stretch \
+                  && docker push $DOCKER_REGISTRY/python:3.6.2-stretch
+                '''
               }
             }
           }
@@ -563,10 +579,12 @@ pipeline {
             }
             stage('3.6.3-stretch Push') {
               steps {
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.3'
-                sh 'docker push $DOCKER_REGISTRY/python:3.6.3'
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.3-stretch'
-                sh 'docker push $DOCKER_REGISTRY/python:3.6.3-stretch'
+                sh '''
+                     docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.3 \
+                  && docker push $DOCKER_REGISTRY/python:3.6.3 \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.3-stretch \
+                  && docker push $DOCKER_REGISTRY/python:3.6.3-stretch
+                '''
               }
             }
           }
@@ -623,10 +641,12 @@ pipeline {
             }
             stage('3.6.4-stretch Push') {
               steps {
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.4'
-                sh 'docker push $DOCKER_REGISTRY/python:3.6.4'
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.4-stretch'
-                sh 'docker push $DOCKER_REGISTRY/python:3.6.4-stretch'
+                sh '''
+                     docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.4 \
+                  && docker push $DOCKER_REGISTRY/python:3.6.4 \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.4-stretch \
+                  && docker push $DOCKER_REGISTRY/python:3.6.4-stretch
+                '''
               }
             }
           }
@@ -683,10 +703,12 @@ pipeline {
             }
             stage('3.6.5-stretch Push') {
               steps {
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.5'
-                sh 'docker push $DOCKER_REGISTRY/python:3.6.5'
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.5-stretch'
-                sh 'docker push $DOCKER_REGISTRY/python:3.6.5-stretch'
+                sh '''
+                     docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.5 \
+                  && docker push $DOCKER_REGISTRY/python:3.6.5 \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.5-stretch \
+                  && docker push $DOCKER_REGISTRY/python:3.6.5-stretch
+                '''
               }
             }
           }
@@ -743,10 +765,12 @@ pipeline {
             }
             stage('3.6.6-stretch Push') {
               steps {
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.6'
-                sh 'docker push $DOCKER_REGISTRY/python:3.6.6'
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.6-stretch'
-                sh 'docker push $DOCKER_REGISTRY/python:3.6.6-stretch'
+                sh '''
+                     docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.6 \
+                  && docker push $DOCKER_REGISTRY/python:3.6.6 \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.6-stretch \
+                  && docker push $DOCKER_REGISTRY/python:3.6.6-stretch
+                '''
               }
             }
           }
@@ -803,10 +827,12 @@ pipeline {
             }
             stage('3.6.7-stretch Push') {
               steps {
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.7'
-                sh 'docker push $DOCKER_REGISTRY/python:3.6.7'
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.7-stretch'
-                sh 'docker push $DOCKER_REGISTRY/python:3.6.7-stretch'
+                sh '''
+                     docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.7 \
+                  && docker push $DOCKER_REGISTRY/python:3.6.7 \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.7-stretch \
+                  && docker push $DOCKER_REGISTRY/python:3.6.7-stretch
+                '''
               }
             }
           }
@@ -863,14 +889,16 @@ pipeline {
             }
             stage('3.6.8-stretch Push') {
               steps {
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.6'
-                sh 'docker push $DOCKER_REGISTRY/python:3.6'
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.6-stretch'
-                sh 'docker push $DOCKER_REGISTRY/python:3.6-stretch'
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.8'
-                sh 'docker push $DOCKER_REGISTRY/python:3.6.8'
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.8-stretch'
-                sh 'docker push $DOCKER_REGISTRY/python:3.6.8-stretch'
+                sh '''
+                     docker tag $IMAGE $DOCKER_REGISTRY/python:3.6 \
+                  && docker push $DOCKER_REGISTRY/python:3.6 \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:3.6-stretch \
+                  && docker push $DOCKER_REGISTRY/python:3.6-stretch \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.8 \
+                  && docker push $DOCKER_REGISTRY/python:3.6.8 \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:3.6.8-stretch \
+                  && docker push $DOCKER_REGISTRY/python:3.6.8-stretch
+                '''
               }
             }
           }
@@ -929,10 +957,12 @@ pipeline {
             }
             stage('3.7.0-stretch Push') {
               steps {
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.7.0'
-                sh 'docker push $DOCKER_REGISTRY/python:3.7.0'
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.7.0-stretch'
-                sh 'docker push $DOCKER_REGISTRY/python:3.7.0-stretch'
+                sh '''
+                     docker tag $IMAGE $DOCKER_REGISTRY/python:3.7.0 \
+                  && docker push $DOCKER_REGISTRY/python:3.7.0 \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:3.7.0-stretch \
+                  && docker push $DOCKER_REGISTRY/python:3.7.0-stretch
+                '''
               }
             }
           }
@@ -989,10 +1019,12 @@ pipeline {
             }
             stage('3.7.1-stretch Push') {
               steps {
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.7.1'
-                sh 'docker push $DOCKER_REGISTRY/python:3.7.1'
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.7.1-stretch'
-                sh 'docker push $DOCKER_REGISTRY/python:3.7.1-stretch'
+                sh '''
+                     docker tag $IMAGE $DOCKER_REGISTRY/python:3.7.1 \
+                  && docker push $DOCKER_REGISTRY/python:3.7.1 \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:3.7.1-stretch \
+                  && docker push $DOCKER_REGISTRY/python:3.7.1-stretch
+                '''
               }
             }
           }
@@ -1049,10 +1081,12 @@ pipeline {
             }
             stage('3.7.2-stretch Push') {
               steps {
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.7.2'
-                sh 'docker push $DOCKER_REGISTRY/python:3.7.2'
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.7.2-stretch'
-                sh 'docker push $DOCKER_REGISTRY/python:3.7.2-stretch'
+                sh '''
+                     docker tag $IMAGE $DOCKER_REGISTRY/python:3.7.2 \
+                  && docker push $DOCKER_REGISTRY/python:3.7.2 \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:3.7.2-stretch \
+                  && docker push $DOCKER_REGISTRY/python:3.7.2-stretch
+                '''
               }
             }
           }
@@ -1109,22 +1143,24 @@ pipeline {
             }
             stage('3.7.3-stretch Push') {
               steps {
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3'
-                sh 'docker push $DOCKER_REGISTRY/python:3'
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3-stretch'
-                sh 'docker push $DOCKER_REGISTRY/python:3-stretch'
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.7'
-                sh 'docker push $DOCKER_REGISTRY/python:3.7'
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.7-stretch'
-                sh 'docker push $DOCKER_REGISTRY/python:3.7-stretch'
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.7.3'
-                sh 'docker push $DOCKER_REGISTRY/python:3.7.3'
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:3.7.3-stretch'
-                sh 'docker push $DOCKER_REGISTRY/python:3.7.3-stretch'
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:latest'
-                sh 'docker push $DOCKER_REGISTRY/python:latest'
-                sh 'docker tag $IMAGE $DOCKER_REGISTRY/python:stretch'
-                sh 'docker push $DOCKER_REGISTRY/python:stretch'
+                sh '''
+                     docker tag $IMAGE $DOCKER_REGISTRY/python:3 \
+                  && docker push $DOCKER_REGISTRY/python:3 \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:3-stretch \
+                  && docker push $DOCKER_REGISTRY/python:3-stretch \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:3.7 \
+                  && docker push $DOCKER_REGISTRY/python:3.7 \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:3.7-stretch \
+                  && docker push $DOCKER_REGISTRY/python:3.7-stretch \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:3.7.3 \
+                  && docker push $DOCKER_REGISTRY/python:3.7.3 \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:3.7.3-stretch \
+                  && docker push $DOCKER_REGISTRY/python:3.7.3-stretch \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:latest \
+                  && docker push $DOCKER_REGISTRY/python:latest \
+                  && docker tag $IMAGE $DOCKER_REGISTRY/python:stretch \
+                  && docker push $DOCKER_REGISTRY/python:stretch
+                '''
               }
             }
           }
