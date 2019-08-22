@@ -107,11 +107,11 @@ RUN cd /usr/local/bin \
 
 # if this is called "PIP_VERSION", pip explodes with "ValueError: invalid truth value '<VERSION>'"
 ENV PYTHON_PIP_VERSION 19.2.2
-# https://github.com/pypa/get-pip
-ENV PYTHON_GET_PIP_URL https://github.com/pypa/get-pip/raw/0c72a3b4ece313faccb446a96c84770ccedc5ec5/get-pip.py
-ENV PYTHON_GET_PIP_SHA256 201edc6df416da971e64cc94992d2dd24bc328bada7444f0c4f2031ae31e8dad
 
 RUN set -ex; \
+# https://github.com/pypa/get-pip
+	PYTHON_GET_PIP_URL='https://github.com/pypa/get-pip/raw/0c72a3b4ece313faccb446a96c84770ccedc5ec5/get-pip.py'; \
+	PYTHON_GET_PIP_SHA256='201edc6df416da971e64cc94992d2dd24bc328bada7444f0c4f2031ae31e8dad'; \
 	\
 	wget -O get-pip.py "$PYTHON_GET_PIP_URL"; \
 	echo "$PYTHON_GET_PIP_SHA256 *get-pip.py" | sha256sum -c -; \

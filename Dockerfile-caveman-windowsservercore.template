@@ -36,11 +36,12 @@ RUN $url = ('https://www.python.org/ftp/python/{0}/python-{1}.amd64.msi' -f $env
 
 # if this is called "PIP_VERSION", pip explodes with "ValueError: invalid truth value '<VERSION>'"
 ENV PYTHON_PIP_VERSION %%PLACEHOLDER%%
-# https://github.com/pypa/get-pip
-ENV PYTHON_GET_PIP_URL %%PLACEHOLDER%%
-ENV PYTHON_GET_PIP_SHA256 %%PLACEHOLDER%%
 
-RUN Write-Host ('Downloading get-pip.py ({0}) ...' -f $env:PYTHON_GET_PIP_URL); \
+RUN \
+# https://github.com/pypa/get-pip
+	$PYTHON_GET_PIP_URL='%%PLACEHOLDER%%'; \
+	$PYTHON_GET_PIP_SHA256='%%PLACEHOLDER%%'; \
+	Write-Host ('Downloading get-pip.py ({0}) ...' -f $env:PYTHON_GET_PIP_URL); \
 	[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; \
 	Invoke-WebRequest -Uri $env:PYTHON_GET_PIP_URL -OutFile 'get-pip.py'; \
 	Write-Host ('Verifying sha256 ({0}) ...' -f $env:PYTHON_GET_PIP_SHA256); \
